@@ -17,7 +17,7 @@ export default { name: "App", components: { Nav } };
   min-height: 100%;
   border-left: 1px #d8d8d8 solid;
   border-right: 1px #d8d8d8 solid;
-  positon: relative;
+  position: relative;
   text-align: center;
 }
 /* 여백제거 + 드래그방지 */
