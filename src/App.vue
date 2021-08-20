@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <router-view />
+    <router-view style="padding-bottom: 100px" />
     <Nav />
   </div>
 </template>
@@ -18,7 +18,7 @@ export default { name: "App", components: { Nav } };
   border-left: 1px #d8d8d8 solid;
   border-right: 1px #d8d8d8 solid;
   position: relative;
-  text-align: center;
+  /* text-align: center; */
 }
 /* 여백제거 + 드래그방지 */
 body {
