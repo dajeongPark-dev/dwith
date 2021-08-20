@@ -17,7 +17,9 @@ const routes = [
     // this generates a separate chunk (bulletinBoard.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "bulletinBoard" */ "../views/BulletinBoard.vue"),
+      import(
+        /* webpackChunkName: "bulletinBoard" */ "../views/BulletinBoard.vue"
+      ),
   },
   {
     path: "/chatting",
