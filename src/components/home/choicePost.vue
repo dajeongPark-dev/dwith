@@ -1,12 +1,12 @@
 <template>
   <div class="choicePost">
     <h3 style="font-weight: bold">컴공 복전</h3>
-    <div style="height: 110px">
+    <div style="height: 90px; margin-top: 15px">
       <div>
         시각 디자인과 학생인데, 개발을 배우기 위해 컴공으로 복전을 신청하는게
-        좋을까요?시각 ...
+        좋을까요?시각 디자인과 학생인데, 개발을 배우기 위해
       </div>
-      <ul class="postTag" style="list-style-type: none; padding: 0px">
+      <ul class="postTag">
         <li>#UIUX</li>
         <li>#프론트엔드</li>
         <li>#복수전공</li>
@@ -37,7 +37,7 @@ export default {
 <style scope>
 .choicePost {
   width: 80%;
-  padding: 15px;
+  padding: 20px;
   height: 220px;
   margin: auto;
   background: #ffffff 0% 0% no-repeat padding-box;
@@ -46,6 +46,14 @@ export default {
   /* border: 1px black solid; */
   border-radius: 10px;
   opacity: 1;
+  font: normal normal normal 15px/19px Noto Sans KR;
+  letter-spacing: -0.52px;
+  color: #000000cc;
+  opacity: 1;
+}
+.postTag {
+  list-style-type: none;
+  padding: 0px;
 }
 .postTag > li {
   font-size: 11px;
@@ -56,6 +64,6 @@ export default {
 .postAnswerBtn {
   margin: 0 auto;
   text-align: center;
-  font-size: 10px;
+  font-size: 12px;
 }
 </style>
