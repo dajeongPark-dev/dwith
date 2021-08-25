@@ -7,11 +7,12 @@ import VueHead from "vue-head";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
-
+import axios from "axios";
 Vue.use(BootstrapVue);
 Vue.use(VueHead);
 
 Vue.config.productionTip = false;
+Vue.prototype.$http = axios;
 
 new Vue({
   router,
