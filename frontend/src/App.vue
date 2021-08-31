@@ -1,12 +1,22 @@
 <template>
   <div id="app">
     <router-view style="padding-bottom: 100px" />
-    <Nav />
+    <Nav v-if="loginSuccess" />
+    <!--로그인/회원가입시 네비게이션 바 사라짐-->
   </div>
 </template>
 <script>
 import Nav from "./views/nav";
-export default { name: "App", components: { Nav } };
+export default {
+  name: "App",
+  components: { Nav },
+  data() {
+    return {
+      //true(네비게이션 바 보임), false(네비게이션 바 안보임)
+      loginSuccess: false,
+    };
+  },
+};
 </script>
 <style>
 /* 반응형 최대크기 */

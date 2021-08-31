@@ -93,7 +93,7 @@ export default {
 }
 /* 이후 스크롤 가만히 둘 때 네비게이션 바 사라지게 하려면 필요 */
 .nav-hide {
-  bottom: -70px;
+  bottom: -80px;
   transition: all 0.3s linear;
 }
 /* 네이게이션 바 영역(20%씩 5개) */
