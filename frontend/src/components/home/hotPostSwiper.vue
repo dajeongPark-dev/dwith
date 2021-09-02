@@ -6,12 +6,9 @@
       :options="swiperOptions"
       @slideChange="slideChangeTransitionStart"
     >
-      <swiper-slide><hotPost></hotPost></swiper-slide>
-      <swiper-slide><hotPost></hotPost></swiper-slide>
-      <swiper-slide><hotPost></hotPost></swiper-slide>
-      <swiper-slide><hotPost></hotPost></swiper-slide>
-      <swiper-slide><hotPost></hotPost></swiper-slide>
-      <swiper-slide><hotPost></hotPost></swiper-slide>
+      <swiper-slide v-for="post in posts" :key="post.index">
+        <hotPost :title="post.title" :content="post.content"></hotPost>
+      </swiper-slide>
 
       <!-- pagination -->
       <!-- <div class="swiper-pagination" slot="pagination"></div> -->
@@ -34,6 +31,12 @@ import { Swiper, SwiperSlide } from "vue-awesome-swiper";
 
 export default {
   name: "hotPostSwiper",
+  props: {
+    posts: {
+      type: Object,
+      require: true,
+    },
+  },
   components: {
     Swiper,
     SwiperSlide,

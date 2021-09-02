@@ -8,12 +8,18 @@
 <script>
 export default {
   name: "hotPost",
+  props: {
+    title: {
+      type: String,
+      require: true,
+    },
+    content: {
+      type: String,
+      require: true,
+    },
+  },
   data() {
-    return {
-      title: "브랜딩 vs UIUX",
-      content:
-        "UI UX 디자이너를 꿈꾸는 학생입니다. 취직을 위해 프론트 개발 관련 언어를 공부해야 할까요?",
-    };
+    return {};
   },
 };
 </script>

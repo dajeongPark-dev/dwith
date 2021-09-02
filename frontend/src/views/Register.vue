@@ -1,7 +1,7 @@
 <template>
   <div class="register">
-    <div class="register_preStep" @click="gotoPreStep">&#60;</div>
-    <div style="min-height: 500px">
+    <div class="register_preStep" @click="gotoPreStep"></div>
+    <div style="min-height: 600px">
       <register_1 v-if="registerStep === 1"></register_1>
       <register_2 v-if="registerStep === 2"></register_2>
       <register_3 v-if="registerStep === 3"></register_3>
@@ -26,10 +26,10 @@ export default {
   },
   methods: {
     gotoPreStep() {
-      this.registerStep == 1 ? "" : this.registerStep--;
+      this.registerStep == 1 ? this.$router.go(-1) : this.registerStep--;
     },
     gotoNextStep() {
-      this.registerStep == 4 ? "" : this.registerStep++;
+      this.registerStep == 4 ? this.$router.push("/main") : this.registerStep++;
     },
   },
 };
@@ -39,26 +39,26 @@ export default {
 .register {
   padding-left: 5%;
   padding-right: 5%;
+  padding-top: 57px;
 }
 .register_preStep {
-  width: 10%;
-  margin-top: 57px;
+  width: 12px;
+  height: 20px;
   margin-bottom: 35px;
-  font: normal normal bold 36px/40px Noto Sans KR;
-  letter-spacing: -0.6px;
-  color: #00000066;
+  background: #00000066 0% 0% no-repeat padding-box;
   opacity: 1;
 }
 .register_nextStep {
-  position: absolute;
   width: 20%;
-  left: 40%;
-  bottom: 30px;
+  margin: 100px auto 50px;
+  clear: both;
   text-align: center;
-  font: normal normal bold 19px/25px Noto Sans KR;
+  font: normal normal bold 20px/25px Noto Sans KR;
   letter-spacing: -0.76px;
   color: #000000;
   opacity: 1;
-  border: 1px solid black;
 }
+/* .register_nextStep:active {
+  color: #3b00ff;
+} */
 </style>

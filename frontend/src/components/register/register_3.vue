@@ -25,7 +25,6 @@
           <li class="register_tagNotSelected">브랜딩 디자인</li>
         </ul>
       </div>
-      <div class="register_next">다음</div>
     </div>
   </div>
 </template>

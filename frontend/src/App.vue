@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <router-view style="padding-bottom: 100px" />
+    <router-view :style="loginSuccess ? 'padding-bottom: 100px' : ''" />
     <Nav v-if="loginSuccess" />
     <!--로그인/회원가입시 네비게이션 바 사라짐-->
   </div>
@@ -19,6 +19,10 @@ export default {
 };
 </script>
 <style>
+/* 태그 스타일 */
+@import "./css/homeStyle.css";
+@import "./css/loginStyle.css";
+
 /* 반응형 최대크기 */
 /* 반응형 = 750px 이상이면 750까지만 보여주고 이하면 크기에 마춰서 작게 보여줌 */
 #app {

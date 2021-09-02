@@ -5,20 +5,52 @@
       <div style="text-align: center; margin-bottom: 55px">
         <b-avatar
           class="register_profileImage"
-          text="??"
           size="115px"
-          badge="(+)"
-        ></b-avatar>
+          badge
+          badge-offset="-12px"
+          button
+          :src="require('@/image/star.png')"
+          @click="changeProfileImage"
+        >
+          <template #badge>
+            <img
+              src="@/image/star.png"
+              width="40"
+              height="40"
+              style="border: 1px black solid; border-radius: 20px"
+            />
+          </template>
+        </b-avatar>
       </div>
+      <label for="inputNickname">이메일</label>
+      <input
+        v-model="form.userEmail"
+        type="email"
+        placeholder="이메일을 입력해주세요"
+        required
+      />
+      <label for="inputNickname">비밀번호</label>
+      <input
+        v-model="form.userPassword"
+        type="password"
+        placeholder="비밀번호를 입력해주세요"
+        required
+      />
+      <label for="inputNickname">이름</label>
+      <input
+        v-model="form.userName"
+        type="text"
+        placeholder="이름 입력해주세요"
+        required
+      />
       <label for="inputNickname">닉네임</label>
       <input
-        id="inputNickname"
         v-model="form.userNickname"
         type="text"
         placeholder="닉네임을 입력해주세요"
         required
       />
-      <label for="inputBirth">생년월일</label>
+      <label>생년월일</label>
       <select
         id="inputBirth"
         v-model="form.userYear"
@@ -59,12 +91,15 @@
       </div>
       <label for="inputJob">직업</label>
       <select id="inputJob" v-model="form.userJob" style="width: 67%">
-        <option :value="null">직업을 선택해 주세요.</option>
+        <option value="null">직업을 선택해 주세요.</option>
         <option v-for="job in jobs" :key="job">
           {{ job }}
         </option>
       </select>
     </form>
+    <div>
+      {{ form }}
+    </div>
   </div>
 </template>
 
@@ -74,6 +109,9 @@ export default {
   data() {
     return {
       form: {
+        userEmail: "",
+        userPassword: "",
+        userName: "",
         userNickname: "",
         userYear: 2000,
         userMonth: 1,
@@ -94,8 +132,13 @@ export default {
           21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31,
         ],
       },
-      jobs: ["AAA", "BBB", "CCC", "DDD"],
+      jobs: ["AAA", "BBB", "CCC", "DDD", "EEE"],
     };
+  },
+  methods: {
+    changeProfileImage() {
+      alert("사진 변경");
+    },
   },
 };
 </script>
@@ -131,7 +174,13 @@ export default {
   float: left;
   clear: left;
 }
-.register_inputInformation input[type="text"] {
+.register_inputInformation input,
+select:focus {
+  outline: none;
+}
+.register_inputInformation input[type="text"],
+input[type="email"],
+input[type="password"] {
   background: #ffffff 0% 0% no-repeat padding-box;
   box-shadow: inset 0px 3px 6px #00000029;
   border: 1px solid #b7b7b7;
@@ -140,13 +189,16 @@ export default {
 
   font: normal normal bold 15px/46px Noto Sans KR;
   letter-spacing: -0.6px;
-  color: #4d4d4d99;
+  color: #000000;
 
   width: 67%;
   height: 46px;
   margin: 10px 0px 10px 0px;
   padding-left: 10px;
   display: inline-block;
+}
+.register_inputInformation input::placeholder {
+  color: #4d4d4d99;
 }
 .register_inputInformation select {
   background: #ffffff 0% 0% no-repeat padding-box;
@@ -157,7 +209,7 @@ export default {
 
   font: normal normal bold 15px/46px Noto Sans KR;
   letter-spacing: -0.6px;
-  color: #4d4d4d99;
+  color: #000000;
 
   height: 46px;
   margin: 10px 0px 10px 0px;
@@ -187,7 +239,8 @@ export default {
   opacity: 1;
 }
 .register_radioGender input[type="radio"]:checked + label {
-  background-color: #333;
-  color: #fff;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 2px solid #3b00ff;
+  color: #000000;
 }
 </style>
