@@ -164,12 +164,12 @@ export default {
 /* 각종 정보 입력 칸 스타일 */
 .register_inputInformation > label {
   text-align: left;
-  font: normal normal bold 13px/46px Noto Sans KR;
+  font: normal normal bold 13px/40px Noto Sans KR;
   letter-spacing: -0.52px;
   color: #00000099;
   opacity: 1;
   width: 33%;
-  height: 46px;
+  height: 40px;
   margin: 10px 0px 10px 0px;
   float: left;
   clear: left;
@@ -187,12 +187,12 @@ input[type="password"] {
   border-radius: 10px;
   opacity: 1;
 
-  font: normal normal bold 15px/46px Noto Sans KR;
+  font: normal normal bold 15px/40px Noto Sans KR;
   letter-spacing: -0.6px;
   color: #000000;
 
   width: 67%;
-  height: 46px;
+  height: 40px;
   margin: 10px 0px 10px 0px;
   padding-left: 10px;
   display: inline-block;
@@ -208,11 +208,11 @@ input[type="password"] {
   opacity: 1;
   cursor: pointer;
 
-  font: normal normal bold 15px/46px Noto Sans KR;
+  font: normal normal bold 15px/40px Noto Sans KR;
   letter-spacing: -0.6px;
   color: #000000;
 
-  height: 46px;
+  height: 40px;
   margin: 10px 0px 10px 0px;
   padding-left: 10px;
   display: inline-block;
@@ -223,7 +223,7 @@ input[type="password"] {
 .register_radioGender input[type="radio"] + label {
   display: inline-block;
   cursor: pointer;
-  height: 46px;
+  height: 40px;
   width: 32%;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -234,7 +234,7 @@ input[type="password"] {
   opacity: 1;
 
   text-align: center;
-  font: normal normal bold 15px/46px Noto Sans KR;
+  font: normal normal bold 15px/40px Noto Sans KR;
   letter-spacing: -0.6px;
   color: #4d4d4d99;
   opacity: 1;

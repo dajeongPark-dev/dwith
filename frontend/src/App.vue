@@ -29,8 +29,8 @@ export default {
   margin: 0 auto;
   width: 750px;
   min-height: 100%;
-  border-left: 1px #d8d8d8 solid;
-  border-right: 1px #d8d8d8 solid;
+  /* border-left: 1px #d8d8d8 solid;
+  border-right: 1px #d8d8d8 solid; */
   position: relative;
   /* text-align: center; */
 }

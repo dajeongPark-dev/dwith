@@ -1,7 +1,7 @@
 <template>
   <div class="register">
     <div class="register_preStep" @click="gotoPreStep"></div>
-    <div style="min-height: 600px">
+    <div>
       <register_1 v-if="registerStep === 1"></register_1>
       <register_2 v-if="registerStep === 2"></register_2>
       <register_3 v-if="registerStep === 3"></register_3>

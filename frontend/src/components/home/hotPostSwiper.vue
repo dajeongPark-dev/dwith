@@ -33,7 +33,7 @@ export default {
   name: "hotPostSwiper",
   props: {
     posts: {
-      type: Object,
+      type: Array,
       require: true,
     },
   },
