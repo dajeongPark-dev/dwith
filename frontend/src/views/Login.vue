@@ -28,7 +28,9 @@
     </div>
     <div class="login_gotoRegister">
       아직 계정이 없나요?
-      <router-link to="/register">회원가입하러 가기</router-link>
+      <router-link to="/register" style="color: #3b00ff">
+        회원가입하러 가기
+      </router-link>
     </div>
   </div>
 </template>
@@ -40,7 +42,7 @@ export default {
     return {
       login_email: "",
       login_psw: "",
-      login_auto: true,
+      login_auto: false,
     };
   },
   methods: {
@@ -108,6 +110,7 @@ input[type="password"] {
   box-shadow: inset 0px 3px 6px #00000029;
   border-radius: 5px;
   opacity: 1;
+  cursor: pointer;
 }
 /* .login_inputLogin input[type="checkbox"]:checked {
 }
@@ -120,8 +123,9 @@ input[type="password"] {
   letter-spacing: -0.48px;
   color: #000000;
   opacity: 0.4;
+  cursor: pointer;
 
-  margin-left: 10px;
+  padding-left: 10px;
   position: relative;
   top: -5px;
 }

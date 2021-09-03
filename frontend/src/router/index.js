@@ -65,6 +65,11 @@ const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes,
+
+  //페이지 이동 시 스크롤을 가장 위로 옮김
+  scrollBehavior() {
+    return { x: 0, y: 0, behavior: "instant" };
+  },
 });
 
 export default router;

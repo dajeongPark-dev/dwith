@@ -86,8 +86,30 @@ export default {
   color: #3b00ff;
   opacity: 1;
 }
-.register_jobSelectorWrapper {
-  width: 330px;
-  margin: 0 auto;
+
+/* 화면 크기에 따라서 직업 배열 다르게 (2칸<400px<3칸<500px<4칸<650px<5칸)*/
+@media (max-width: 400px) {
+  .register_jobSelectorWrapper {
+    width: 220px;
+    margin: 0 auto;
+  }
+}
+@media (min-width: 400px) and (max-width: 500px) {
+  .register_jobSelectorWrapper {
+    width: 330px;
+    margin: 0 auto;
+  }
+}
+@media (min-width: 500px) and (max-width: 650px) {
+  .register_jobSelectorWrapper {
+    width: 440px;
+    margin: 0 auto;
+  }
+}
+@media (min-width: 650px) {
+  .register_jobSelectorWrapper {
+    width: 550px;
+    margin: 0 auto;
+  }
 }
 </style>

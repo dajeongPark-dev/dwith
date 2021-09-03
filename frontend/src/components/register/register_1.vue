@@ -206,6 +206,7 @@ input[type="password"] {
   border: 1px solid #b7b7b7;
   border-radius: 10px;
   opacity: 1;
+  cursor: pointer;
 
   font: normal normal bold 15px/46px Noto Sans KR;
   letter-spacing: -0.6px;

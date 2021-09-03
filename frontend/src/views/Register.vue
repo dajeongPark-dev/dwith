@@ -27,9 +27,13 @@ export default {
   methods: {
     gotoPreStep() {
       this.registerStep == 1 ? this.$router.go(-1) : this.registerStep--;
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
     },
     gotoNextStep() {
-      this.registerStep == 4 ? this.$router.push("/main") : this.registerStep++;
+      this.registerStep == 4
+        ? this.$router.replace("/main")
+        : this.registerStep++;
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
     },
   },
 };
@@ -40,6 +44,8 @@ export default {
   padding-left: 5%;
   padding-right: 5%;
   padding-top: 57px;
+
+  scroll-behavior: auto;
 }
 .register_preStep {
   width: 12px;
@@ -47,6 +53,7 @@ export default {
   margin-bottom: 35px;
   background: #00000066 0% 0% no-repeat padding-box;
   opacity: 1;
+  cursor: pointer;
 }
 .register_nextStep {
   width: 20%;
@@ -57,6 +64,7 @@ export default {
   letter-spacing: -0.76px;
   color: #000000;
   opacity: 1;
+  cursor: pointer;
 }
 /* .register_nextStep:active {
   color: #3b00ff;
