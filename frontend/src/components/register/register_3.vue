@@ -4,10 +4,10 @@
       직종과 관련된 키워드 중<br />관심 진로를 선택해 주세요.
     </div>
     <div style="width: calc(100% + 10px)">
-      <div class="register_selectedJob">{{ userInterestJob }}</div>
+      <div class="register_selectedJob">{{ interestJob }}</div>
       <div
         class="register_jobTag"
-        v-for="tag in jobTags"
+        v-for="tag in jobTagLists"
         :key="tag"
         style="display: inline-block"
       >
@@ -29,17 +29,27 @@
         </li>
       </ul>
     </div>
+    <div class="register_nextStep" @click="gotoNextStep">다음</div>
   </div>
 </template>
 
 <script>
 export default {
   name: "register_3",
+  props: {
+    interestJob: {
+      type: String,
+      require: "true",
+    },
+    jobTags: {
+      type: Array,
+      require: "true",
+    },
+  },
   data() {
     return {
-      userInterestJob: "IT.SW",
-      userJobTags: [],
-      jobTags: [
+      userJobTags: this.jobTags,
+      jobTagLists: [
         "웹프로그래머",
         "응용프로그래머",
         "시스템프로그래머",
@@ -57,91 +67,11 @@ export default {
     deleteTag(tag) {
       this.userJobTags = this.userJobTags.filter((element) => element !== tag);
     },
+    gotoNextStep() {
+      this.$emit("thirdStepClear", this.userJobTags);
+    },
   },
 };
 </script>
 
-<style scoped>
-.register_hello3 {
-  text-align: left;
-  font: normal normal bold 24px/35px Noto Sans KR;
-  letter-spacing: -0.96px;
-  color: #000000;
-  opacity: 1;
-
-  margin-bottom: 70px;
-}
-.register_selectedJob {
-  margin-bottom: 10px;
-  text-align: left;
-  font: normal normal bold 13px/36px Noto Sans KR;
-  letter-spacing: -0.52px;
-  color: #00000099;
-  opacity: 1;
-}
-.register_jobTag input[type="checkbox"] {
-  display: none;
-}
-.register_jobTag input[type="checkbox"] + label {
-  display: inline-block;
-  cursor: pointer;
-  height: 32px;
-  margin: 0px 5px 6px 0px;
-  padding: 5px 8px;
-  float: left;
-
-  border: 1px solid #000000;
-  border-radius: 21px;
-  opacity: 0.4;
-
-  text-align: center;
-  font: normal normal bold 13px/22px Noto Sans KR;
-  letter-spacing: -0.56px;
-  color: #000000;
-  opacity: 0.4;
-}
-.register_jobTag input[type="checkbox"]:checked + label {
-  border: 1px solid #3b00ff;
-  border-radius: 21px;
-  opacity: 1;
-
-  text-align: center;
-  font: normal normal bold 13px/22px Noto Sans KR;
-  letter-spacing: -0.56px;
-  color: #3b00ff;
-  opacity: 1;
-}
-.selectedTags {
-  padding: 15px 0px 0px 3px;
-  margin-top: 150px;
-  margin-bottom: -60px;
-  list-style-type: none;
-  clear: both;
-  overflow: hidden;
-}
-.selectedTags li {
-  list-style-type: none;
-  background: #ffffff 0% 0% no-repeat padding-box;
-  box-shadow: 0px 2px 5px #00000073;
-  border-radius: 22px;
-  opacity: 1;
-
-  float: left;
-  display: block;
-  padding: 8px 12px;
-  margin: 0px 6px 8px 0px;
-
-  text-align: left;
-  font: normal normal bold 14px/20px Noto Sans KR;
-  letter-spacing: -0.56px;
-  color: #000000;
-  opacity: 1;
-}
-.register_deleteTag {
-  margin-left: 10px;
-  cursor: pointer;
-
-  color: #919191;
-  opacity: 1;
-}
-</style>
+<style scoped></style>

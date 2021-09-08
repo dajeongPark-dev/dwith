@@ -2,12 +2,28 @@
   <div class="register">
     <div class="register_preStep" @click="gotoPreStep"></div>
     <div>
-      <register_1 v-if="registerStep === 1"></register_1>
-      <register_2 v-if="registerStep === 2"></register_2>
-      <register_3 v-if="registerStep === 3"></register_3>
-      <register_4 v-if="registerStep === 4"></register_4>
+      <register_1
+        v-show="registerStep === 1"
+        :userInformation="registerInformation.userInformation"
+        @firstStepClear="firstStepClear"
+      >
+      </register_1>
+      <register_2
+        v-show="registerStep === 2"
+        :interestJob="registerInformation.userInterestJob"
+        @secondStepClear="secondStepClear"
+      >
+      </register_2>
+      <register_3
+        v-show="registerStep === 3"
+        :interestJob="registerInformation.userInterestJob"
+        :jobTags="registerInformation.userJobTags"
+        @thirdStepClear="thirdStepClear"
+      >
+      </register_3>
+      <register_4 v-show="registerStep === 4" :user="registerInformation">
+      </register_4>
     </div>
-    <div class="register_nextStep" @click="gotoNextStep">다음</div>
   </div>
 </template>
 
@@ -22,51 +38,86 @@ export default {
   data() {
     return {
       registerStep: 1,
+
+      registerInformation: {
+        userInformation: {
+          userEmail: "",
+          userPassword: "",
+          userName: "",
+          userNickname: "",
+          userBirthYear: 2000,
+          userBirthMonth: 1,
+          userBirthDay: 1,
+          userGender: "male",
+          userJob: "null",
+        },
+        userInterestJob: "경영 사무",
+        userJobTags: [],
+      },
     };
   },
   methods: {
     gotoPreStep() {
-      this.registerStep == 1 ? this.$router.go(-1) : this.registerStep--;
+      switch (this.registerStep) {
+        case 1:
+          this.$router.go(-1);
+          break;
+        case 2:
+          console.log(this.userInformation);
+          this.registerStep--;
+          break;
+        case 3:
+          console.log(this.userInformation);
+          this.registerStep--;
+          break;
+        case 4:
+          console.log(this.userInformation);
+          this.registerStep--;
+          break;
+        default:
+          console.log("회원가입 단계 오류");
+      }
       window.scrollTo({ top: 0, left: 0, behavior: "instant" });
     },
     gotoNextStep() {
-      this.registerStep == 4
-        ? this.$router.replace("/main")
-        : this.registerStep++;
+      switch (this.registerStep) {
+        case 1:
+          console.log(this.userInformation);
+          this.registerStep++;
+          break;
+        case 2:
+          console.log(this.userInformation);
+          this.registerStep++;
+          break;
+        case 3:
+          console.log(this.userInformation);
+          this.registerStep++;
+          break;
+        case 4:
+          this.$router.replace("/main");
+          break;
+        default:
+          console.log("회원가입 단계 오류");
+      }
       window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    },
+    firstStepClear(inputInformation) {
+      this.registerInformation.userInformation = inputInformation;
+      console.log(this.registerInformation.userInformation);
+      this.registerStep++;
+    },
+    secondStepClear(inputInformation) {
+      this.registerInformation.userInterestJob = inputInformation;
+      console.log(this.registerInformation.userInterestJob);
+      this.registerStep++;
+    },
+    thirdStepClear(inputInformation) {
+      this.registerInformation.userJobTags = inputInformation;
+      console.log(this.registerInformation.userJobTags);
+      this.registerStep++;
     },
   },
 };
 </script>
 
-<style scoped>
-.register {
-  padding-left: 5%;
-  padding-right: 5%;
-  padding-top: 57px;
-
-  scroll-behavior: auto;
-}
-.register_preStep {
-  width: 12px;
-  height: 20px;
-  margin-bottom: 35px;
-  background: #00000066 0% 0% no-repeat padding-box;
-  opacity: 1;
-  cursor: pointer;
-}
-.register_nextStep {
-  width: 20%;
-  margin: 100px auto 50px;
-  clear: both;
-  text-align: center;
-  font: normal normal bold 20px/25px Noto Sans KR;
-  letter-spacing: -0.76px;
-  color: #000000;
-  opacity: 1;
-  cursor: pointer;
-}
-/* .register_nextStep:active {
-  color: #3b00ff;
-} */
-</style>
+<style scoped></style>

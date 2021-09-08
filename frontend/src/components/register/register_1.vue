@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="register_hello1">반가워요:)<br />프로필을 작성해주세요.</div>
-    <form class="register_inputInformation">
+    <form class="register_inputInformation" @submit.prevent="sbm">
       <div style="text-align: center; margin-bottom: 55px">
         <b-avatar
           class="register_profileImage"
@@ -22,62 +22,71 @@
           </template>
         </b-avatar>
       </div>
-      <label for="inputNickname">이메일</label>
+      <label>이메일</label>
       <input
-        v-model="form.userEmail"
+        v-model="inputInformation.userEmail"
         type="email"
         placeholder="이메일을 입력해주세요"
         required
       />
-      <label for="inputNickname">비밀번호</label>
+      <label>비밀번호</label>
       <input
-        v-model="form.userPassword"
+        v-model="inputInformation.userPassword"
         type="password"
         placeholder="비밀번호를 입력해주세요"
         required
       />
-      <label for="inputNickname">이름</label>
+      <label>비밀번호 재입력</label>
       <input
-        v-model="form.userName"
+        value=""
+        type="password"
+        placeholder="비밀번호를 다시 입력해주세요"
+        required
+      />
+      <label>이름</label>
+      <input
+        v-model="inputInformation.userName"
         type="text"
         placeholder="이름 입력해주세요"
         required
       />
-      <label for="inputNickname">닉네임</label>
+      <label>닉네임</label>
       <input
-        v-model="form.userNickname"
+        v-model="inputInformation.userNickname"
         type="text"
         placeholder="닉네임을 입력해주세요"
         required
       />
       <label>생년월일</label>
       <select
-        id="inputBirth"
-        v-model="form.userYear"
+        v-model="inputInformation.userBirthYear"
         style="width: 23%; margin-right: 5%"
       >
         <option v-for="year in date.years" :key="year">
           {{ year }}
         </option>
       </select>
-      <select v-model="form.userMonth" style="width: 17%; margin-right: 5%">
+      <select
+        v-model="inputInformation.userBirthMonth"
+        style="width: 17%; margin-right: 5%"
+      >
         <option v-for="month in date.months" :key="month">
           {{ month }}
         </option>
       </select>
-      <select v-model="form.userDay" style="width: 17%">
+      <select v-model="inputInformation.userBirthDay" style="width: 17%">
         <option v-for="day in date.days" :key="day">
           {{ day }}
         </option>
       </select>
-      <label for="inputGender">성별</label>
+      <label>성별</label>
       <div class="register_radioGender">
         <input
           type="radio"
           id="inputGenderMale"
           name="gender"
           value="male"
-          v-model="form.userGender"
+          v-model="inputInformation.userGender"
         />
         <label for="inputGenderMale" style="margin-right: 3%">남성</label>
         <input
@@ -85,39 +94,43 @@
           id="inputGenderFemale"
           name="gender"
           value="female"
-          v-model="form.userGender"
+          v-model="inputInformation.userGender"
         />
         <label for="inputGenderFemale">여성</label>
       </div>
-      <label for="inputJob">직업</label>
-      <select id="inputJob" v-model="form.userJob" style="width: 67%">
+      <label>직업</label>
+      <select v-model="inputInformation.userJob" style="width: 67%">
         <option value="null">직업을 선택해 주세요.</option>
         <option v-for="job in jobs" :key="job">
           {{ job }}
         </option>
       </select>
+      <div class="register_nextStep" @click="gotoNextStep">다음</div>
     </form>
-    <div>
-      {{ form }}
-    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: "register_1",
+  props: {
+    userInformation: {
+      type: Object,
+      require: true,
+    },
+  },
   data() {
     return {
-      form: {
-        userEmail: "",
-        userPassword: "",
-        userName: "",
-        userNickname: "",
-        userYear: 2000,
-        userMonth: 1,
-        userDay: 1,
-        userGender: "male",
-        userJob: "null",
+      inputInformation: {
+        userEmail: this.userInformation.userEmail,
+        userPassword: this.userInformation.userPassword,
+        userName: this.userInformation.userName,
+        userNickname: this.userInformation.userNickname,
+        userBirthYear: this.userInformation.userBirthYear,
+        userBirthMonth: this.userInformation.userBirthMonth,
+        userBirthDay: this.userInformation.userBirthDay,
+        userGender: this.userInformation.userGender,
+        userJob: this.userInformation.userJob,
       },
       date: {
         years: [
@@ -139,109 +152,11 @@ export default {
     changeProfileImage() {
       alert("사진 변경");
     },
+    gotoNextStep() {
+      this.$emit("firstStepClear", this.inputInformation);
+    },
   },
 };
 </script>
 
-<style scoped>
-/* 인삿말 스타일 */
-.register_hello1 {
-  text-align: left;
-  font: normal normal bold 24px/35px Noto Sans KR;
-  letter-spacing: -0.96px;
-  color: #000000;
-  opacity: 1;
-
-  margin-bottom: 70px;
-}
-/* 프로필 이미지 적용란 스타일 */
-.register_profileImage {
-  background: #ffffff 0% 0% no-repeat padding-box;
-  box-shadow: 0px 3px 6px #00000029;
-  border: 1px solid #bcbcbc;
-  opacity: 1;
-}
-/* 각종 정보 입력 칸 스타일 */
-.register_inputInformation > label {
-  text-align: left;
-  font: normal normal bold 13px/40px Noto Sans KR;
-  letter-spacing: -0.52px;
-  color: #00000099;
-  opacity: 1;
-  width: 33%;
-  height: 40px;
-  margin: 10px 0px 10px 0px;
-  float: left;
-  clear: left;
-}
-.register_inputInformation input,
-select:focus {
-  outline: none;
-}
-.register_inputInformation input[type="text"],
-input[type="email"],
-input[type="password"] {
-  background: #ffffff 0% 0% no-repeat padding-box;
-  box-shadow: inset 0px 3px 6px #00000029;
-  border: 1px solid #b7b7b7;
-  border-radius: 10px;
-  opacity: 1;
-
-  font: normal normal bold 15px/40px Noto Sans KR;
-  letter-spacing: -0.6px;
-  color: #000000;
-
-  width: 67%;
-  height: 40px;
-  margin: 10px 0px 10px 0px;
-  padding-left: 10px;
-  display: inline-block;
-}
-.register_inputInformation input::placeholder {
-  color: #4d4d4d99;
-}
-.register_inputInformation select {
-  background: #ffffff 0% 0% no-repeat padding-box;
-  box-shadow: inset 0px 3px 6px #00000029;
-  border: 1px solid #b7b7b7;
-  border-radius: 10px;
-  opacity: 1;
-  cursor: pointer;
-
-  font: normal normal bold 15px/40px Noto Sans KR;
-  letter-spacing: -0.6px;
-  color: #000000;
-
-  height: 40px;
-  margin: 10px 0px 10px 0px;
-  padding-left: 10px;
-  display: inline-block;
-}
-.register_radioGender input[type="radio"] {
-  display: none;
-}
-.register_radioGender input[type="radio"] + label {
-  display: inline-block;
-  cursor: pointer;
-  height: 40px;
-  width: 32%;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  background: #ffffff 0% 0% no-repeat padding-box;
-  box-shadow: inset 0px 3px 6px #00000029;
-  border: 1px solid #b7b7b7;
-  border-radius: 10px;
-  opacity: 1;
-
-  text-align: center;
-  font: normal normal bold 15px/40px Noto Sans KR;
-  letter-spacing: -0.6px;
-  color: #4d4d4d99;
-  opacity: 1;
-}
-.register_radioGender input[type="radio"]:checked + label {
-  background: #ffffff 0% 0% no-repeat padding-box;
-  border: 2px solid #3b00ff;
-  color: #000000;
-}
-</style>
+<style scoped></style>

@@ -21,6 +21,7 @@
         <label>마케팅 정보 수신 동의 (선택)</label><br />
       </div>
       <input type="submit" value="동의하고 시작하기" />
+      {{ user }}
     </form>
   </div>
 </template>
@@ -28,6 +29,12 @@
 <script>
 export default {
   name: "register_4",
+  props: {
+    user: {
+      type: Object,
+      require: "true",
+    },
+  },
 };
 </script>
 
