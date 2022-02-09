@@ -108,9 +108,15 @@ app.post('/register', (req, res) => { // Sign Up request
   console.log(res.body)
   db.query('SELECT * FROM user WHERE username=?', [req.body.userNickname], (err, results) => {
     if (err)
-      res.redirect('register');
+      res.send({
+        isSuccess: false,
+        code: "db 에러"
+      }); // if error occurred
     if (!!results[0])
-      res.redirect('register');
+      res.send({
+        isSuccess: false,
+        code: "이미 존재하는 유저"
+      }); // if error occurred
     else {
       // Encrypting password with random salt and inserting new user data in database
       const randomSalt = crypto.randomBytes(32).toString("hex");
@@ -123,12 +129,12 @@ app.post('/register', (req, res) => { // Sign Up request
             if (err2)
               res.send({
                 isSuccess: false,
-                code: 400
+                code: "에러"
               }); // if error occurred
             else
               res.send({
                 isSuccess: true,
-                code: 200
+                code: "회원가입 성공"
               });
           });
       });
