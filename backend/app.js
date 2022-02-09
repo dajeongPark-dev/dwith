@@ -11,7 +11,6 @@ var logger = require('morgan');
 let server = require('http').createServer(app);
 let session = require('express-session');
 let MySQLStore = require('express-mysql-session')(session);
-let flash = require('connect-flash');
 let crypto = require('crypto');
 let passport = require('passport');
 let LocalStrategy = require('passport-local').Strategy;
@@ -58,21 +57,21 @@ app.use(passport.session());
 
 // Passport.js setting
 passport.use(new LocalStrategy(
-  function (userEmail, userPassword, done) {
+  function (username, password, done) {
     let db = mysql.createConnection(db_config);
     db.connect();
     // Get user data from DB to check password
-    db.query('SELECT * FROM user WHERE email=?', [userEmail], (err, results) => {
+    db.query('SELECT * FROM user WHERE email=?', [username], (err, results) => {
       if (err) return done(err);
       if (!results[0]) { // Wrong username
         db.end();
-        return done('please check your userEmail.');
+        return done('please check your username.');
       }
       else {
         db.end();
         let user = results[0];
-        const [encrypted, salt] = user.userPassword.split("$"); // splitting password and salt
-        crypto.pbkdf2(userPassword, salt, 65536, 64, 'sha512', (err, derivedKey) => { // Encrypting input password
+        const [encrypted, salt] = user.password.split("$"); // splitting password and salt
+        crypto.pbkdf2(password, salt, 65536, 64, 'sha512', (err, derivedKey) => { // Encrypting input password
           if (err) return done(err);
           if (derivedKey.toString("hex") === encrypted) // Check its same
             return done(null, user);
@@ -85,13 +84,13 @@ passport.use(new LocalStrategy(
   }
 ));
 passport.serializeUser(function (user, done) { // passport.js serializing
-  done(null, user.userEmail);
+  done(null, user.username);
 });
 
-passport.deserializeUser(function (userEmail, done) { // passport.js deserializing with checking Data Existence
+passport.deserializeUser(function (username, done) { // passport.js deserializing with checking Data Existence
   let db = mysql.createConnection(db_config);
   db.connect();
-  db.query('SELECT * FROM user WHERE email=?', [userEmail], function (err, results) {
+  db.query('SELECT * FROM user WHERE username=?', [username], function (err, results) {
     if (err)
       return done(err, false);
     if (!results[0])
