@@ -100,7 +100,7 @@ passport.deserializeUser(function (username, done) { // passport.js deserializin
   });
 });
 
-app.use('/', indexRouter);
+//app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 app.get('/main', (req, res) => {
