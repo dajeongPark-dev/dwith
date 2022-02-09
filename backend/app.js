@@ -11,6 +11,7 @@ var logger = require('morgan');
 let server = require('http').createServer(app);
 let session = require('express-session');
 let MySQLStore = require('express-mysql-session')(session);
+let flash = require('connect-flash');
 let crypto = require('crypto');
 let passport = require('passport');
 let LocalStrategy = require('passport-local').Strategy;
