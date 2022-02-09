@@ -74,7 +74,10 @@ passport.use(new LocalStrategy(
         crypto.pbkdf2(password, salt, 65536, 64, 'sha512', (err, derivedKey) => { // Encrypting input password
           if (err) return done(err);
           if (derivedKey.toString("hex") === encrypted) // Check its same
+          {
+            console.log("login success");
             return done(null, user);
+          }
           else
             return done('please check your password.');
         });//pbkdf2
