@@ -104,10 +104,13 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 app.get('/main', (req, res) => {
-  res.send({
-    isSuccess: true,
-    code: "로그인 성공"
-  });
+  res.send(`
+    <html>
+      <body>
+        <h1>로그인 성공</h1>
+      </body>
+    </html>
+  `);
 });
 
 app.get('/login', (req, res) => {
