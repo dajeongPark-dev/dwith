@@ -121,9 +121,15 @@ app.post('/register', (req, res) => { // Sign Up request
           [req.body.userNickname, passwordWithSalt, req.body.userEmail], (err2) => {
             db.end();
             if (err2)
-              res.redirect('register'); // if error occurred
+              res.send({
+                isSuccess: false,
+                code: 400
+              }); // if error occurred
             else
-              res.status(200);
+              res.send({
+                isSuccess: true,
+                code: 200
+              });
           });
       });
     }
@@ -145,6 +151,6 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-server.listen(3000, () => {
-  console.log(`Example app listening at http://localhost:3000`)
+server.listen(80, () => {
+  console.log(`Example app listening at http://localhost:80`)
 });
