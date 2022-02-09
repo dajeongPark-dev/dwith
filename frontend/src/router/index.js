@@ -1,27 +1,29 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Login from "../views/Login.vue";
+
+import HomePage from "../views/HomePage.vue";
+import LoginPage from "../views/LoginPage.vue";
+import RegisterPage from "../views/RegisterPage.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
     {
-        //로그인 화면
-        path: "/main",
-        name: "main",
-        component: () => import("../views/Home.vue"),
-    },
-    {
-        //회원가입 화면
-        path: "/register",
-        name: "register",
-        component: () => import("../views/Register.vue"),
-    },
-    {
-        //홈 화면
+        // 홈 화면은 "/" 또는 "/main" 으로 접속 가능
         path: "/",
-        name: "login",
-        component: Login,
+        alias: ["/main"],
+        name: "Home",
+        component: HomePage,
+    },
+    {
+        path: "/login",
+        name: "Login",
+        component: LoginPage,
+    },
+    {
+        path: "/register",
+        name: "Register",
+        component: RegisterPage,
     },
     {
         //게시판 화면
@@ -67,9 +69,9 @@ const router = new VueRouter({
     routes,
 
     //페이지 이동 시 스크롤을 가장 위로 옮김
-    scrollBehavior() {
-        return { x: 0, y: 0, behavior: "instant" };
-    },
+    // scrollBehavior() {
+    //     return { x: 0, y: 0, behavior: "instant" };
+    // },
 });
 
 export default router;
