@@ -103,31 +103,19 @@ passport.deserializeUser(function (username, done) { // passport.js deserializin
   });
 });
 
-//app.use('/', indexRouter);
+app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
-app.get('/main', (req, res) => {
-  res.send(`
-    <html>
-      <body>
-        <h1>로그인 성공</h1>
-      </body>
-    </html>
-  `);
-});
-
-app.get('/login', (req, res) => {
-  res.send({
-    isSuccess: false,
-    code: "로그인 실패"
-  });
-});
 
 app.post('/login', // When a login request is received
     passport.authenticate('local', {
-        successRedirect: '/main',
         failureRedirect: '/login',
         failureFlash: true
+    }, (req, res) => {
+      res.send({
+        isSuccess: true,
+        code: "로그인 성공"
+      });
     })
 );
 
