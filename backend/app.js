@@ -61,12 +61,13 @@ passport.use(new LocalStrategy(
     let db = mysql.createConnection(db_config);
     db.connect();
     // Get user data from DB to check password
-    db.query('SELECT * FROM user WHERE username=?', [username], (err, results) => {
+    db.query('SELECT * FROM user WHERE email=?', [username], (err, results) => {
       if (err) return done(err);
-      if (!results[0]) // Wrong username
+      if (!results[0]) { // Wrong username
+        db.end();
         return done('please check your username.');
+      }
       else {
-        db.query('UPDATE user SET last_connection=NOW() WHERE username=?', [username]); // Set last connection datetime
         db.end();
         let user = results[0];
         const [encrypted, salt] = user.password.split("$"); // splitting password and salt
@@ -101,6 +102,28 @@ passport.deserializeUser(function (username, done) { // passport.js deserializin
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
+app.get('/main', (req, res) => {
+  res.send({
+    isSuccess: true,
+    code: "로그인 성공"
+  });
+});
+
+app.get('/login', (req, res) => {
+  res.send({
+    isSuccess: false,
+    code: "로그인 실패"
+  });
+});
+
+app.post('/login', // When a login request is received
+    passport.authenticate('local', {
+        successRedirect: '/main',
+        failureRedirect: '/login',
+        failureFlash: true
+    })
+);
 
 app.post('/register', (req, res) => { // Sign Up request
   let db = mysql.createConnection(db_config);
