@@ -1,36 +1,39 @@
 <template>
-    <div>
+    <div class="login container">
         <!-- 로고 -->
-        <div>로고</div>
-        <div>
+        <div class="login-logo">
+            <img src="../../public/img/star.png" />
+        </div>
+        <div class="login-input-form">
             <!-- 아이디 입력 창(text) -->
             <div>
-                아이디 입력
-                <input type="text" v-model="inputEmail" />
+                <input type="text" v-model="inputEmail" placeholder="아이디/이메일" />
             </div>
             <!-- 비밀번호 입력 창(text) -->
             <div>
-                비밀번호 입력
-                <input type="text" v-model="inputPsw" />
+                <input type="password" v-model="inputPsw" placeholder="비밀 번호" />
             </div>
             <!-- 자동 로그인(check) -->
             <div>
-                자동 로그인 체크
                 <input type="checkbox" v-model="autoLogin" />
+                계정 기억하기
             </div>
             <!-- 로그인 버튼 -->
-            <button @click="requestLogin">로그인</button>
+            <button @click="requestLogin">로그인 하기</button>
         </div>
         <!-- or선 -->
-        <div class="login_line">Or</div>
+        <div class="login-line">Or</div>
         <!-- SNS 로그인 버튼 -->
-        <div>
-            <div>구글</div>
-            <div>카카오톡</div>
-            <div>페이스북</div>
+        <div class="row">
+            <div class="col-4 login-sns"><img src="../../public/img/star.png" /></div>
+            <div class="col-4 login-sns"><img src="../../public/img/star.png" /></div>
+            <div class="col-4 login-sns"><img src="../../public/img/star.png" /></div>
         </div>
         <!-- 회원가입 링크 -->
-        <div><router-link to="/register" style="color: #3b00ff">회원가입하러 가기</router-link></div>
+        <div class="login-to-register">
+            아직 계정이 없나요?
+            <router-link to="/register" style="color: #3b00ff"> 회원가입 </router-link>
+        </div>
     </div>
 </template>
 
@@ -69,39 +72,3 @@ export default {
     },
 };
 </script>
-
-<style scoped>
-div {
-    margin: 20px;
-    padding: 20px;
-    border: 1px solid black;
-}
-.login_line {
-    display: flex;
-    flex-basis: 100%;
-    align-items: center;
-    font: normal normal bolder 17px/17px Noto Sans KR;
-    letter-spacing: -0.6px;
-    color: #3b00ff;
-    opacity: 1;
-    /* margin: 30px 0px; */
-}
-.login_line::before {
-    content: "";
-    flex-grow: 1;
-    background: rgba(0, 0, 0, 0.35);
-    height: 1px;
-    font-size: 0px;
-    line-height: 0px;
-    margin: 0px 10px 0px 0px;
-}
-.login_line::after {
-    content: "";
-    flex-grow: 1;
-    background: rgba(0, 0, 0, 0.35);
-    height: 1px;
-    font-size: 0px;
-    line-height: 0px;
-    margin: 0px 0px 0px 10px;
-}
-</style>
