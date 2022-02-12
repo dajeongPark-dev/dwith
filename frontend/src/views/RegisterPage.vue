@@ -36,6 +36,22 @@ export default {
     },
     created() {
         console.log("RegisterPage created");
+        this.$store.state.user.registerInfo = {
+            userEmail: "",
+            userPassword: "",
+            userNickname: "",
+            userBirth: {
+                year: 2022,
+                month: 1,
+                day: 1,
+            },
+            userGender: "male",
+            userJob: "직업을 선택해주세요",
+            interest: {
+                job: "",
+                detailJob: [],
+            },
+        };
     },
     mounted() {
         console.log("RegisterPage mounted");

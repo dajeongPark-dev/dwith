@@ -55,7 +55,7 @@ export default {
     mounted() {
         console.log("HomePage mounted");
         // 유저 idx를 가지지 않은 상태(로그인 안된 상태)라면 로그인 페이지로 이동
-        if (this.$store.state.user.userIdx === null) {
+        if (this.$store.state.user.userInfo.userIdx === null) {
             console.log("로그인 필요 -> 로그인 페이지로 이동");
             alert("로그인 필요");
             location.href = "./login";

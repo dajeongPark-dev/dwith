@@ -2,7 +2,7 @@
     <div class="login container">
         <!-- 로고 -->
         <div class="login-logo">
-            <img src="../../public/img/star.png" />
+            <img src="../../public/img/star.png"/>
         </div>
         <div class="login-input-form">
             <!-- 아이디 입력 창(text) -->
@@ -25,9 +25,9 @@
         <div class="login-line">Or</div>
         <!-- SNS 로그인 버튼 -->
         <div class="row">
-            <div class="col-4 login-sns"><img src="../../public/img/star.png" /></div>
-            <div class="col-4 login-sns"><img src="../../public/img/star.png" /></div>
-            <div class="col-4 login-sns"><img src="../../public/img/star.png" /></div>
+            <div class="col-4 text-right login-sns"><img src="../../public/img/star.png" /></div>
+            <div class="col-4 text-center login-sns"><img src="../../public/img/star.png" /></div>
+            <div class="col-4 text-left login-sns"><img src="../../public/img/star.png" /></div>
         </div>
         <!-- 회원가입 링크 -->
         <div class="login-to-register">

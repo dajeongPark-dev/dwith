@@ -12,7 +12,7 @@
 .login-logo {
     width: 60px;
     height: 60px;
-    margin: 0 auto 100px;
+    margin: 0 auto 110px;
 
     background-color: plum;
 }
@@ -94,9 +94,6 @@
     margin: 0px 0px 0px 10px;
 }
 /* SNS 로그인 */
-.login-sns {
-    text-align: center;
-}
 .login-sns img {
     width: 40px;
     height: 40px;
@@ -112,4 +109,156 @@
     font: normal normal normal 12px/17px Noto Sans KR;
     letter-spacing: -0.48px;
     opacity: 1;
+}
+
+/* 
+ * 회원가입 페이지
+ * 로그인 화면, 로고, 입력 창, 중간선, SNS로그인, 회원가입 링크
+ */
+.register {
+    padding-left: 5% !important;
+    padding-right: 5% !important;
+}
+.register-step {
+    margin: 0px auto 50px;
+    font: normal normal bold 20px/25px Noto Sans KR;
+    letter-spacing: -0.76px;
+    color: #000000;
+    opacity: 1;
+    cursor: pointer;
+}
+.register-hello {
+    margin-top: 110px;
+    margin-bottom: 70px;
+
+    text-align: left;
+    font: normal normal bold 24px/35px Noto Sans KR;
+    letter-spacing: -0.96px;
+    color: #000000;
+    opacity: 1;
+}
+.register-profile {
+    width: 120px;
+    height: 120px;
+    margin: 0px auto;
+    border-radius: 70%;
+    overflow: hidden;
+
+    background: #ffffff 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border: 1px solid #bcbcbc;
+    opacity: 1;
+}
+.register-profile img {
+    width: 120px;
+    height: 110px;
+}
+.register-input1 {
+    margin-top: 55px;
+    margin-bottom: 105px;
+}
+.register-input1 > div > label {
+    font: normal normal 900 14px/40px Noto Sans KR;
+    letter-spacing: -0.52px;
+    color: #00000099;
+    opacity: 1;
+    height: 40px;
+    margin: 10px 0px 10px 0px;
+}
+.register-input1 input[type="text"],
+.register-input1 input[type="email"],
+.register-input1 input[type="password"] {
+    background: #ffffff 0% 0% no-repeat padding-box;
+    box-shadow: inset 0px 3px 6px #00000029;
+    border: 1px solid #b7b7b7;
+    border-radius: 10px;
+    opacity: 1;
+
+    font: normal normal 600 15px/40px Noto Sans KR;
+    letter-spacing: -0.6px;
+    color: #000000;
+
+    height: 40px;
+    margin: 10px 0px 10px 0px;
+    padding-left: 9px;
+}
+.register-input1 input::placeholder {
+    color: #4d4d4d99;
+    font: normal normal 600 14px/40px Noto Sans KR;
+}
+.register-input1 select {
+    background: #ffffff 0% 0% no-repeat padding-box;
+    box-shadow: inset 0px 3px 6px #00000029;
+    border: 1px solid #b7b7b7;
+    border-radius: 10px;
+    opacity: 1;
+    cursor: pointer;
+
+    font: normal normal bold 15px/40px Noto Sans KR;
+    letter-spacing: -0.6px;
+    color: #000000;
+
+    height: 40px;
+    margin: 10px 0px 10px 0px;
+    padding-left: 10px;
+    display: inline-block;
+}
+.register-input1 input:focus,
+.register-input1 select:focus {
+    outline: none;
+}
+.register-input1 input[type="radio"] {
+    display: none;
+}
+.register-input1 input[type="radio"] + label {
+    display: inline-block;
+    cursor: pointer;
+    height: 40px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    box-shadow: inset 0px 3px 6px #00000029;
+    border: 1px solid #b7b7b7;
+    border-radius: 10px;
+    opacity: 1;
+
+    text-align: center;
+    font: normal normal bold 15px/40px Noto Sans KR;
+    letter-spacing: -0.6px;
+    color: #4d4d4d99;
+    opacity: 1;
+}
+.register-input1 input[type="radio"]:checked + label {
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border: 2px solid #3b00ff;
+    color: #000000;
+}
+.register-input2 {
+    margin: 20px 0px 175px;
+}
+.register-input2 input[type="radio"] {
+    display: none;
+}
+.register-input2 input[type="radio"] + label {
+    display: inline-block;
+    cursor: pointer;
+    width: 90px;
+    height: 90px;
+    margin: 15px 0px;
+
+    background: #ffffff 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border: 1px solid #bcbcbc;
+    border-radius: 45px;
+    opacity: 1;
+
+    text-align: center;
+    font: normal normal bold 15px/90px Noto Sans KR;
+    letter-spacing: -0.6px;
+    color: #7b7b7b;
+    opacity: 1;
+}
+.register-input2 input[type="radio"]:checked + label {
+    border: 2px solid #3b00ff;
+    color: #3b00ff;
 }

@@ -10,12 +10,17 @@
         </div> -->
         <router-view />
         <!-- 하단 네비게이션 바(로그인 창, 회원가입 창일 때 안보임) -->
-        <Nav />
+        <Nav v-if="isLogin" />
     </div>
 </template>
 <script>
 import Nav from "@/components/NavBar.vue";
 export default {
+    data() {
+        return {
+            isLogin: false,
+        };
+    },
     mounted() {
         // $.initialize();
     },
@@ -25,14 +30,6 @@ export default {
 };
 </script>
 <style>
-/* 태그 스타일 */
-@import "./css/homeStyle.css";
-@import "./css/loginStyle.css";
-
-#app {
-    padding-bottom: 100px;
-}
-
 /* 반응형 최대크기 */
 /* 반응형 = 750px 이상이면 750까지만 보여주고 이하면 크기에 마춰서 작게 보여줌 */
 /* #app {
