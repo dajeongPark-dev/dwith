@@ -1,8 +1,8 @@
 /* 
  * 로그인 페이지
- * 로그인 화면, 로고, 입력 창, 중간선, SNS로그인, 회원가입 링크
+ * 로그인 레이아웃, 로고, 입력 창, 중간선, SNS로그인, 회원가입 링크
  */
-/* 로그인 화면 */
+/* 로그인 레이아웃 */
 .login {
     padding-left: 5% !important;
     padding-right: 5% !important;
@@ -113,12 +113,14 @@
 
 /* 
  * 회원가입 페이지
- * 로그인 화면, 로고, 입력 창, 중간선, SNS로그인, 회원가입 링크
+ * 회원가입 페이지1,2,3,4
  */
+ /* 회원가입 레이아웃 */
 .register {
     padding-left: 5% !important;
     padding-right: 5% !important;
 }
+/* 회원가입 단계 버튼 */
 .register-step {
     margin: 0px auto 50px;
     font: normal normal bold 20px/25px Noto Sans KR;
@@ -127,16 +129,19 @@
     opacity: 1;
     cursor: pointer;
 }
+/* 인사글 */
 .register-hello {
     margin-top: 110px;
     margin-bottom: 70px;
 
     text-align: left;
-    font: normal normal bold 24px/35px Noto Sans KR;
-    letter-spacing: -0.96px;
+    font: normal normal 600 24px/35px Noto Sans KR;
+    letter-spacing: -2px;
     color: #000000;
     opacity: 1;
 }
+/* 회원가입 페이지1 */
+/* 프로필 이미지 */
 .register-profile {
     width: 120px;
     height: 120px;
@@ -153,6 +158,7 @@
     width: 120px;
     height: 110px;
 }
+/* 회원정보 입력 창 */
 .register-input1 {
     margin-top: 55px;
     margin-bottom: 105px;
@@ -233,6 +239,8 @@
     border: 2px solid #3b00ff;
     color: #000000;
 }
+/* 회원가입 페이지2 */
+/* 관심 직무 선택 창 */
 .register-input2 {
     margin: 20px 0px 175px;
 }
@@ -261,4 +269,87 @@
 .register-input2 input[type="radio"]:checked + label {
     border: 2px solid #3b00ff;
     color: #3b00ff;
+}
+/* 회원가입 페이지3 */
+/* 세부 직무 선택 창 */
+.register-input3 {
+    margin-bottom: 250px;
+}
+.register-input3 + div {
+    margin-bottom: 10px;
+    text-align: left;
+    font: normal normal bold 13px/20px Noto Sans KR;
+    letter-spacing: -0.52px;
+    color: #00000099;
+    opacity: 1;
+}
+.register-input3 input[type="checkbox"] {
+    display: none;
+}
+.register-input3 input[type="checkbox"] + label {
+    cursor: pointer;
+    height: 32px;
+    padding: 0px 8px;
+
+    border: 1px solid #000000;
+    border-radius: 21px;
+    opacity: 0.4;
+
+    text-align: center;
+    font: normal normal bold 13px/32px Noto Sans KR;
+    letter-spacing: -0.56px;
+    color: #000000;
+    opacity: 0.4;
+}
+.register-input3 input[type="checkbox"]:checked + label {
+    border: 1px solid #3b00ff;
+    border-radius: 21px;
+    color: #3b00ff;
+    opacity: 1;
+}
+/* 회원가입 페이지4 */
+/* 약관 동의 창 */
+.register-input4 {
+    margin-top: 130px;
+    margin-bottom: 50px;
+}
+.register-input4-bg {
+    background: #f0f0f0 0% 0% no-repeat padding-box;
+    border-radius: 10px;
+    opacity: 1;
+}
+.register-input4 .select-all {
+    margin-bottom: 10px;
+    text-align: left;
+    font: normal normal medium 18px/46px Noto Sans KR;
+    letter-spacing: -0.72px;
+    color: #000000;
+    opacity: 1;
+}
+.register-input4 .select-each {
+    text-align: left;
+    font: normal normal medium 15px/46px Noto Sans KR;
+    letter-spacing: -0.6px;
+    color: #000000;
+    opacity: 1;
+}
+.select-each div {
+    margin: 10px 0px 10px;
+}
+.register-input4 input[type="checkbox"] {
+    margin-right: 15px;
+}
+.register-finish {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 40px;
+
+    background: transparent linear-gradient(284deg, #0535ff 0%, #c865ff 100%) 0% 0% no-repeat padding-box;
+    border-radius: 29px;
+    opacity: 1;
+
+    text-align: center;
+    font: normal normal 500 19px/25px Noto Sans KR;
+    letter-spacing: -0.76px;
+    color: #ffffff;
 }
