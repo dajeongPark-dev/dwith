@@ -55,9 +55,7 @@ export default {
             var require3 = document.getElementById("require3").checked;
             if (require1 && require2 && require3) {
                 console.log("회원가입 요청");
-                // console.log(this.$store.state.user.userInfo);
-
-                this.$store.dispatch("requestRegister", this.$store.state.user.userInfo);
+                this.$store.dispatch("requestRegister", this.$store.state.auth.userInfo);
             } else alert("약관 동의 필요");
         },
         // 전체 체크 하기

@@ -2,7 +2,7 @@
     <div class="login container">
         <!-- 로고 -->
         <div class="login-logo">
-            <img src="../../public/img/star.png"/>
+            <img src="../../public/img/star.png" />
         </div>
         <div class="login-input-form">
             <!-- 아이디 입력 창(text) -->
@@ -15,8 +15,8 @@
             </div>
             <!-- 자동 로그인(check) -->
             <div>
-                <input type="checkbox" v-model="autoLogin" />
-                계정 기억하기
+                <input type="checkbox" disabled v-model="autoLogin" />
+                계정 기억하기(기능x)
             </div>
             <!-- 로그인 버튼 -->
             <button @click="requestLogin">로그인 하기</button>
@@ -54,6 +54,7 @@ export default {
             console.log("입력 비밀번호 : " + this.inputPsw);
             console.log("자동 로그인 여부 : " + this.autoLogin);
 
+            this.$store.state.user.userInfo.autoLogin = this.autoLogin;
             this.$store.dispatch("requestLogin", { username: this.inputEmail, password: this.inputPsw });
         },
     },

@@ -44,7 +44,7 @@ export default {
         nextStep() {
             // 세부 직무를 골랐다면 vuex에 정보 저장 후 다음 단계로 이동
             if (this.interest.detailJob.length > 0) {
-                this.$store.state.user.registerInfo.interest.detailJob = this.interest.detailJob;
+                this.$store.state.auth.registerInfo.interest.detailJob = this.interest.detailJob;
                 this.$emit("nextStep");
             } else alert("세부 직무 선택 필요");
         },
@@ -64,10 +64,10 @@ export default {
         console.log("Register_3 mounted");
 
         // 해당 화면 mounted시 vuex에 저장된 값을 불러옴 (세부 직무는 초기화)
-        this.interest.job = this.$store.state.user.registerInfo.interest.job;
+        this.interest.job = this.$store.state.auth.registerInfo.interest.job;
 
         // 해당 interest에 대한 세부 직무 데이터를 서버로부터 불러옴
-        this.jobTagLists = this.$store.state.user.subJobTag[this.interest.job];
+        this.jobTagLists = this.$store.state.auth.subJobTag[this.interest.job];
         if (this.jobTagLists == null) {
             this.jobTagLists = ["세부 직업1입니다", "세부 직업2", "세부 직업3입니다입니다", "세부 직업4444", "세부 직업5"];
         }

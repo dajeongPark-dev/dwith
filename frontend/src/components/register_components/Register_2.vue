@@ -36,7 +36,7 @@ export default {
             if (this.interestJob.length === 0) alert("직업 선택 필요");
             else {
                 // vuex에 정보 저장 후 다음 단계로 이동
-                this.$store.state.user.registerInfo.interest.job = this.interestJob;
+                this.$store.state.auth.registerInfo.interest.job = this.interestJob;
                 this.$emit("nextStep");
             }
         },
@@ -48,7 +48,7 @@ export default {
         console.log("Register_2 mounted");
 
         // 해당 화면 mounted시 vuex에 저장된 값(혹은 default값)을 불러옴
-        this.interestJob = this.$store.state.user.registerInfo.interest.job;
+        this.interestJob = this.$store.state.auth.registerInfo.interest.job;
     },
 };
 </script>

@@ -2,6 +2,7 @@
     <div>
         <!-- 헤더 -->
         <div>
+            <button @click="requestLogout">로그아웃</button>
             <!-- 로고, 알림 아이콘 -->
             <div>
                 <div>로고</div>
@@ -48,18 +49,26 @@ export default {
             },
         };
     },
-    methods: {},
+    methods: {
+        // 로그아웃 시도
+        requestLogout() {
+            console.log("로그아웃 요청");
+            console.log("로그아웃 시도 idx : " + this.$store.state.user.userInfo.userIdx);
+            this.$store.dispatch("requestLogout", this.$store.state.user.userInfo.userIdx);
+        },
+    },
     created() {
         console.log("HomePage created");
-    },
-    mounted() {
-        console.log("HomePage mounted");
+
         // 유저 idx를 가지지 않은 상태(로그인 안된 상태)라면 로그인 페이지로 이동
         if (this.$store.state.user.userInfo.userIdx === null) {
             console.log("로그인 필요 -> 로그인 페이지로 이동");
             alert("로그인 필요");
             location.href = "./login";
         }
+    },
+    mounted() {
+        console.log("HomePage mounted");
     },
 };
 </script>

@@ -8,11 +8,6 @@ import axios from "axios";
 Vue.config.productionTip = false;
 Vue.prototype.$axios = axios; // axios를 전역적으로 사용(매번 import할 필요x)
 
-import BootstrapVue from "bootstrap-vue";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap-vue/dist/bootstrap-vue.css";
-Vue.use(BootstrapVue);
-
 new Vue({
     router,
     store,

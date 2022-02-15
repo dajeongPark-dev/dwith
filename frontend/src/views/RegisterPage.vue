@@ -27,11 +27,25 @@ export default {
         previousStep() {
             console.log("회원가입 이전 단계");
             this.registerStep -= 1;
+
+            // 화면 가장 위로 올리기
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: "instant",
+            });
         },
         // 다음 단계로 이동
         nextStep() {
             console.log("회원가입 다음 단계");
             this.registerStep += 1;
+
+            // 화면 가장 위로 올리기
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: "instant",
+            });
         },
     },
     created() {
