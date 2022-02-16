@@ -31,15 +31,17 @@ app.use(require('connect-history-api-fallback')());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+// 로그 남기는 부분인듯?
 app.use(logger('dev'));
+
+// express 기능 관련 초기화
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-app.use(express.urlencoded({ extended: false }));
-app.use(session({ // Session settings
+// 세션 관련 초기화
+app.use(session({
   secret: '!@#$%^&*',
   store: new MySQLStore(db_config),
   resave: false,
@@ -48,12 +50,12 @@ app.use(session({ // Session settings
     maxAge: 6000 * 60 * 60 // 쿠키 유효기간 6시간
   }
 }));
-app.use(passport.initialize()); // passport.js initialization
+app.use(passport.initialize());
 app.use(passport.session());
 
 
 
-
+// 여러 라우터들 연결 부분
 app.use('/', indexRouter);
 app.use('/', authRouter);
 app.use('/register', registerRouter);
@@ -76,6 +78,8 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+// open server
 server.listen(80, () => {
   console.log(`Example app listening at http://localhost:80`)
 });
