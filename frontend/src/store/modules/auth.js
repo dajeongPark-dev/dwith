@@ -8,16 +8,16 @@ export default {
     state: () => ({
         // 회원가입 입력 정보 임시 저장
         registerInfo: {
-            userEmail: "",
-            userPassword: "",
-            userNickname: "",
-            userBirth: {
+            email: "",
+            password: "",
+            username: "",
+            birth: {
                 year: 2022,
                 month: 1,
                 day: 1,
             },
-            userGender: "male",
-            userJob: "직업을 선택해주세요",
+            gender: "male",
+            job: "직업을 선택해주세요",
             interest: {
                 job: "",
                 detailJob: [],
@@ -156,7 +156,7 @@ export default {
                 .requestRegister(inputData)
                 // 서버 통신 성공 시
                 .then((response) => {
-                    console.log(response.data);
+                    console.log(response);
                     context.commit("responseRegister", response.data.result);
                 })
                 //에러 발생 시

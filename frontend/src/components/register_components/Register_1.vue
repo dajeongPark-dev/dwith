@@ -106,12 +106,12 @@ export default {
             else if (this.userJob === "직업을 선택해주세요") alert("직업 입력 필요");
             // 모든 정보 올바르게 입력 시 vuex에 정보 저장 후 다음 단계로 이동
             else {
-                this.$store.state.auth.registerInfo.userEmail = this.userEmail;
-                this.$store.state.auth.registerInfo.userPassword = this.userPassword;
-                this.$store.state.auth.registerInfo.userNickname = this.userNickname;
-                this.$store.state.auth.registerInfo.userBirth = this.userBirth;
-                this.$store.state.auth.registerInfo.userGender = this.userGender;
-                this.$store.state.auth.registerInfo.userJob = this.userJob;
+                this.$store.state.auth.registerInfo.email = this.userEmail;
+                this.$store.state.auth.registerInfo.password = this.userPassword;
+                this.$store.state.auth.registerInfo.username = this.userNickname;
+                this.$store.state.auth.registerInfo.birth = this.userBirth;
+                this.$store.state.auth.registerInfo.gender = this.userGender;
+                this.$store.state.auth.registerInfo.job = this.userJob;
                 this.$emit("nextStep");
             }
         },
@@ -123,12 +123,12 @@ export default {
         console.log("Register_1 mounted");
 
         // 해당 화면 mounted시 vuex에 저장된 값(혹은 default값)을 불러옴
-        this.userEmail = this.$store.state.auth.registerInfo.userEmail;
-        this.userPassword = this.$store.state.auth.registerInfo.userPassword;
-        this.userNickname = this.$store.state.auth.registerInfo.userNickname;
-        this.userBirth = this.$store.state.auth.registerInfo.userBirth;
-        this.userGender = this.$store.state.auth.registerInfo.userGender;
-        this.userJob = this.$store.state.auth.registerInfo.userJob;
+        this.userEmail = this.$store.state.auth.registerInfo.email;
+        this.userPassword = this.$store.state.auth.registerInfo.password;
+        this.userNickname = this.$store.state.auth.registerInfo.username;
+        this.userBirth = this.$store.state.auth.registerInfo.birth;
+        this.userGender = this.$store.state.auth.registerInfo.gender;
+        this.userJob = this.$store.state.auth.registerInfo.job;
     },
 };
 </script>
