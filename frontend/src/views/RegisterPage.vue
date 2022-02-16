@@ -1,5 +1,5 @@
 <template>
-    <div class="register">
+    <div class="register container">
         <Register_1 v-if="registerStep === 1" @nextStep="nextStep"> </Register_1>
 
         <Register_2 v-else-if="registerStep === 2" @previousStep="previousStep" @nextStep="nextStep"> </Register_2>

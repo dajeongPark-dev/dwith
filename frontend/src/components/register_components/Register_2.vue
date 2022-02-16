@@ -1,6 +1,6 @@
 <template>
     <!-- 2페이지 -->
-    <div class="container">
+    <div>
         <!-- 인사글 -->
         <div class="register-hello">관심 직종을 선택해 주세요.</div>
         <!-- 관심 직종 입력(radio) -->
