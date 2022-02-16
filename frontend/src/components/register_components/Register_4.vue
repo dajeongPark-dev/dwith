@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div>
         <!-- 인사글 -->
         <div class="register-hello">이제 드윗과 함께<br />여러분의 꿈을 설계해 보세요!</div>
         <div class="register-input4">

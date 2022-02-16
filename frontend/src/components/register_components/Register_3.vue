@@ -1,6 +1,6 @@
 <template>
     <!-- 3페이지 -->
-    <div class="container">
+    <div>
         <!-- 인사글 -->
         <div class="register-hello">직종과 관련된 키워드 중<br />관심 진로를 선택해 주세요.</div>
         <div class="register-input3">

@@ -1,6 +1,6 @@
 <template>
     <!-- 1페이지 -->
-    <div class="container">
+    <div>
         <!-- 인사글 -->
         <div class="register-hello">반가워요 :)<br />프로필을 작성해주세요.</div>
         <!-- 프로필 사진 설정(text) -->
