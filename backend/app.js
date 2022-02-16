@@ -61,7 +61,7 @@ passport.use(new LocalStrategy(
     let db = mysql.createConnection(db_config);
     db.connect();
     // Get user data from DB to check password
-    db.query('SELECT * FROM user WHERE email=?', [username], (err, results) => {
+    db.query('SELECT * FROM user WHERE username=?', [username], (err, results) => {
       if (err) return done(err);
       if (!results[0]) { // Wrong username
         db.end();
@@ -106,31 +106,54 @@ passport.deserializeUser(function (username, done) { // passport.js deserializin
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
+app.options('/login', (req, res) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 
+  'Content-Type, Authorization, Content-Length, X-Requested-With');
+  res.send();
+});
 
-app.post('/login', // When a login request is received
-    passport.authenticate('local', {
-        failureRedirect: '/login',
-        failureFlash: true
-    }, (req, res) => {
-      res.send({
-        isSuccess: true,
-        code: "로그인 성공"
-      });
-    })
+app.post('/login', (req, res, next) => { // When a login request is received
+    passport.authenticate('local', (err, user, info) => {
+      if (err) {
+        res.status(404).json({
+          isSuccess: false,
+          code: "로그인 실패"
+        });
+        return;
+      }
+
+      if (user) {
+        //const token = user.generateJwt();
+        res.status(200);
+        res.json({
+          isSuccess: true,
+          code: "로그인 성공"
+        });
+      } else {
+        res.status(401).json({
+          isSuccess: false,
+          code: "로그인 실패"
+        });
+      }
+    })(req, res, next);
+  }
 );
+
 
 app.post('/register', (req, res) => { // Sign Up request
   let db = mysql.createConnection(db_config);
   db.connect();
   console.log(res.body)
-  db.query('SELECT * FROM user WHERE username=?', [req.body.userNickname], (err, results) => {
+  db.query('SELECT * FROM user WHERE username=?', [req.body.username], (err, results) => {
     if (err)
-      res.send({
+      res.json({
         isSuccess: false,
         code: "db 에러"
       }); // if error occurred
     if (!!results[0])
-      res.send({
+      res.json({
         isSuccess: false,
         code: "이미 존재하는 유저"
       }); // if error occurred
@@ -141,15 +164,15 @@ app.post('/register', (req, res) => { // Sign Up request
         const passwordWithSalt = encryptedPassword.toString("hex") + "$" + randomSalt;
         db.query(
           "insert into user(username, password, email) values(?,?,?)",
-          [req.body.userNickname, passwordWithSalt, req.body.userEmail], (err2) => {
+          [req.body.username, passwordWithSalt, req.body.email], (err2) => {
             db.end();
             if (err2)
-              res.send({
+              res.json({
                 isSuccess: false,
                 code: "에러"
               }); // if error occurred
             else
-              res.send({
+              res.json({
                 isSuccess: true,
                 code: "회원가입 성공"
               });
