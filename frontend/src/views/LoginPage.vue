@@ -53,8 +53,7 @@ export default {
             console.log("입력 아이디 : " + this.inputEmail);
             console.log("입력 비밀번호 : " + this.inputPsw);
             console.log("자동 로그인 여부 : " + this.autoLogin);
-
-            this.$store.state.user.userInfo.autoLogin = this.autoLogin;
+            
             this.$store.dispatch("requestLogin", { username: this.inputEmail, password: this.inputPsw });
         },
     },
