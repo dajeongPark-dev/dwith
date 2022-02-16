@@ -23,7 +23,6 @@ export default {
                 detailJob: [],
             },
         },
-
         subJobTag: {
             "경영/사무": ["기획,전략,경영", "사무,총무,법무", "인사,노무,교육", "경리,회계,결산", "재무,세무", "사무보조,문서작성"],
             "IT/인터넷": [
@@ -58,7 +57,7 @@ export default {
                 alert("로그인 성공");
                 console.log("로그인 성공");
                 // 로그인한 유저의 정보를 저장후 홈 페이지로 넘어감
-                // this.$store.state.user.userInfo=결과 데이터
+                this.$store.state.user.userInfo = loginResult.userInfo;
                 location.href = "./main";
             } else {
                 alert("로그인 실패");
@@ -124,8 +123,8 @@ export default {
                 .requestLogin(inputData)
                 // 서버 통신 성공 시
                 .then((response) => {
-                    console.log(response.data);
-                    context.commit("responseLogin", response.data.result);
+                    console.log(response);
+                    context.commit("responseLogin", response);
                 })
                 //에러 발생 시
                 .catch((error) => {
@@ -140,8 +139,8 @@ export default {
                 .requestLogout({ userIdx: inputData })
                 // 서버 통신 성공 시
                 .then((response) => {
-                    console.log(response.data);
-                    context.commit("responseLogout", response.data.result);
+                    console.log(response);
+                    context.commit("responseLogout", response);
                 })
                 //에러 발생 시
                 .catch((error) => {
@@ -157,7 +156,7 @@ export default {
                 // 서버 통신 성공 시
                 .then((response) => {
                     console.log(response);
-                    context.commit("responseRegister", response.data.result);
+                    context.commit("responseRegister", response);
                 })
                 //에러 발생 시
                 .catch((error) => {
