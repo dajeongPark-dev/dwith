@@ -4,8 +4,10 @@ import router from "./router";
 import store from "./store";
 
 import BootstrapVue from "bootstrap-vue";
+import VueAwesomeSwiper from "vue-awesome-swiper";
 
 Vue.use(BootstrapVue);
+Vue.use(VueAwesomeSwiper);
 
 import axios from "axios";
 

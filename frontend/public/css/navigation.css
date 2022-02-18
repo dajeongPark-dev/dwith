@@ -11,6 +11,7 @@
     box-shadow: 0px 0px 9px #00000029;
     opacity: 1;
     padding: 20px 0px;
+    z-index: 10;
 }
 /* 이후 스크롤 내리거나 올릴때 네비게이션 바 보이게 하려면 필요 */
 .bottom_nav-show {
