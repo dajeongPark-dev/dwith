@@ -208,13 +208,14 @@ export default {
 }
 
 .tabpane {
-  position: static;
+  position: relative;
   width: 100%;
   height: 300px;
   font-size: 32px;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: flex-start;
+  flex-grow: 0;
 }
 
 .myTag {
