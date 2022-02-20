@@ -1,0 +1,188 @@
+/* 
+ * 메인 페이지
+ * 홈 레이아웃, 로고, 입력 창, 중간선, SNS로그인, 회원가입 링크
+ */
+/* 홈 레이아웃 */
+.home {
+    background: #00000012 0% 0% no-repeat padding-box;
+    opacity: 1;
+
+    padding-bottom: 80px;
+}
+/* 홈 헤더 */
+.home-header {
+    /* height: 260px; */
+    padding-top: 55px;
+    padding-bottom: 40px;
+}
+.home-header img {
+    width: 30px;
+    height: 30px;
+}
+.home-header-logo {
+    background: linear-gradient(105deg, #abdcff 0%, #cc66ff 1%, #0033ff 100%) 0% 0% no-repeat padding-box;
+    mix-blend-mode: multiply;
+    opacity: 1;
+    color: transparent;
+    -webkit-background-clip: text;
+    font: normal normal 700 30px/30px Noto Sans KR;
+}
+.home-header-hello {
+    float: left;
+    text-align: left;
+    font: normal normal 900 19px/36px Noto Sans KR;
+    letter-spacing: -2px;
+    color: #000000;
+    opacity: 1;
+}
+.home-header-link {
+    float: right;
+    text-align: right;
+    font: normal normal bold 14px/36px Noto Sans KR;
+    letter-spacing: -2px;
+    color: #3b00ff;
+    opacity: 1;
+}
+.home-header-tag {
+    list-style-type: none;
+}
+.home-header-tag li {
+    float: left;
+    padding: 3px 8px 3px 8px;
+    margin: 0px 8px 6px 0px;
+}
+.home-header-tag li.major {
+    background: #d1d5ff 0% 0% no-repeat padding-box;
+    border-radius: 21px;
+    opacity: 1;
+    text-align: center;
+    font: normal normal normal 13px/20px Noto Sans KR;
+    letter-spacing: -2px;
+    color: #000000;
+    opacity: 1;
+}
+.home-header-tag li.sub {
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border-radius: 21px;
+    opacity: 1;
+    text-align: center;
+    font: normal normal normal 13px/20px Noto Sans KR;
+    letter-spacing: -2px;
+    color: #000000;
+    opacity: 1;
+}
+/* 게시판 검색창 버튼 */
+.home-search {
+    height: 40px;
+    top: -20px;
+    padding: 0px 20px;
+    line-height: 40px;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000033;
+    border: 1px solid #3b00ff;
+    border-radius: 29px;
+    opacity: 1;
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+/* 최근 게시판 섹션 */
+.home-newPost {
+    background-color: white;
+    padding: 0px 15px 30px 15px;
+    margin: 0px -15px 10px -15px;
+}
+.home-newPost-hello {
+    text-align: left;
+    font: normal normal 700 24px/35px Noto Sans KR;
+    letter-spacing: -0.96px;
+    color: #000000;
+    opacity: 1;
+}
+/* 최근 게시판 카드리스트 */
+.home-newPost-card {
+    font: normal normal 500 15px/20px Noto Sans KR;
+    letter-spacing: -0.96px;
+    color: #000000;
+    opacity: 1;
+
+    margin: 0px -15px;
+}
+/* 최근 게시판 카드 */
+.newPost {
+    width: 80%;
+    padding: 20px;
+    height: 250px;
+    margin: auto;
+    background: #ababab 0% 0% no-repeat padding-box;
+    box-shadow: inset 0px -3px 6px #00000029;
+    mix-blend-mode: multiply;
+    border-radius: 10px;
+    opacity: 1;
+    color: #ffffff;
+}
+.newPostContent {
+    font: normal normal 400 18px/20px Noto Sans KR;
+}
+.postTag {
+    list-style-type: none;
+    padding: 0px;
+}
+.postTag > li {
+    font: normal normal 400 12px/20px Noto Sans KR;
+    float: left;
+    display: block;
+    margin: 5px 8px 0px 0px;
+}
+.postAnswer {
+    padding: 0px 10%;
+    text-align: center;
+}
+.postAnswer button {
+    font: normal normal 500 19px/25px Noto Sans KR;
+    letter-spacing: -2px;
+}
+/* 인기 게시판 섹션 */
+.home-hotPost {
+    background-color: white;
+    padding: 30px 15px 30px 15px;
+    margin: 0px -15px 10px -15px;
+}
+/* 인기 게시판 카드리스트 */
+.home-hotPost-card {
+    font: normal normal 500 15px/20px Noto Sans KR;
+    letter-spacing: -0.96px;
+    color: #000000;
+    opacity: 1;
+}
+.hotPost-hello {
+    padding-left: 35px;
+    font: normal normal 700 20px/20px Noto Sans KR;
+    letter-spacing: -0.96px;
+    color: #000000;
+    opacity: 1;
+}
+.hotPost-detail {
+    padding-right: 35px;
+    text-align: right;
+    font: normal normal 600 15px/20px Noto Sans KR;
+    letter-spacing: -0.96px;
+    color: #000000;
+    opacity: 1;
+}
+/* 인기 게시판 카드 */
+.hotPost {
+    width: 100%;
+    padding: 20px 25px;
+    height: 160px;
+    margin: auto;
+    background: #ababab 0% 0% no-repeat padding-box;
+    box-shadow: inset 0px -3px 6px #00000029;
+    mix-blend-mode: multiply;
+    border-radius: 10px;
+    opacity: 1;
+    color: #000000;
+}
+.hotPostContent {
+    font: normal normal 400 15px/18px Noto Sans KR;
+}

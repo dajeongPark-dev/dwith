@@ -10,7 +10,7 @@ import Nav from "@/components/NavBar.vue";
 export default {
     data() {
         return {
-            isLogin: false,
+            isLogin: true,
         };
     },
     created() {
