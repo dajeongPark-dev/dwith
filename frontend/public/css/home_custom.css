@@ -1,9 +1,15 @@
+/* 
+ * 메인 페이지
+ * 홈 레이아웃, 로고, 입력 창, 중간선, SNS로그인, 회원가입 링크
+ */
+/* 홈 레이아웃 */
 .home {
     background: #00000012 0% 0% no-repeat padding-box;
     opacity: 1;
 
     padding-bottom: 80px;
 }
+/* 홈 헤더 */
 .home-header {
     /* height: 260px; */
     padding-top: 55px;
@@ -65,6 +71,7 @@
     color: #000000;
     opacity: 1;
 }
+/* 게시판 검색창 버튼 */
 .home-search {
     height: 40px;
     top: -20px;
@@ -79,6 +86,7 @@
     cursor: pointer;
     margin-bottom: 30px;
 }
+/* 최근 게시판 섹션 */
 .home-newPost {
     background-color: white;
     padding: 0px 15px 30px 15px;
@@ -91,6 +99,7 @@
     color: #000000;
     opacity: 1;
 }
+/* 최근 게시판 카드리스트 */
 .home-newPost-card {
     font: normal normal 500 15px/20px Noto Sans KR;
     letter-spacing: -0.96px;
@@ -99,6 +108,7 @@
 
     margin: 0px -15px;
 }
+/* 최근 게시판 카드 */
 .newPost {
     width: 80%;
     padding: 20px;
@@ -132,11 +142,13 @@
     font: normal normal 500 19px/25px Noto Sans KR;
     letter-spacing: -2px;
 }
+/* 인기 게시판 섹션 */
 .home-hotPost {
     background-color: white;
     padding: 30px 15px 30px 15px;
     margin: 0px -15px 10px -15px;
 }
+/* 인기 게시판 카드리스트 */
 .home-hotPost-card {
     font: normal normal 500 15px/20px Noto Sans KR;
     letter-spacing: -0.96px;
@@ -158,6 +170,7 @@
     color: #000000;
     opacity: 1;
 }
+/* 인기 게시판 카드 */
 .hotPost {
     width: 100%;
     padding: 20px 25px;
@@ -168,7 +181,7 @@
     mix-blend-mode: multiply;
     border-radius: 10px;
     opacity: 1;
-    color: #ffffff;
+    color: #000000;
 }
 .hotPostContent {
     font: normal normal 400 15px/18px Noto Sans KR;
