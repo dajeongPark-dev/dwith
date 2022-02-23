@@ -14,39 +14,40 @@ passport.use(new LocalStrategy(
     db.connect();
     // Get user data from DB to check password
     db.query('SELECT * FROM user WHERE username=?', [username], (err, results) => {
-      if (err) return done(err);
+      if (err) { return done(err); }
       if (!results[0]) { // Wrong username
         db.end();
-        return done('please check your username.');
+        return done(null, false, { message: 'Incorrect username or password.' });
       }
       else {
         db.end();
         let user = results[0];
         const [encrypted, salt] = user.password.split("$"); // splitting password and salt
         crypto.pbkdf2(password, salt, 65536, 64, 'sha512', (err, derivedKey) => { // Encrypting input password
-          if (err) return done(err);
+          if (err) { return done(err); }
           if (derivedKey.toString("hex") === encrypted) // Check its same
           {
             console.log("login success");
             return done(null, user);
           }
           else
-            return done('please check your password.');
+            return done(null, false, { message: 'Incorrect username or password.' });
         });//pbkdf2
       }
     });//query
-
   }
 ));
 
 // passport.js의 세션 확인 부분 설정
 passport.serializeUser(function (user, done) { // passport.js serializing
+  console.log('serialize user');
   done(null, user.username);
 });
 
 passport.deserializeUser(function (username, done) { // passport.js deserializing with checking Data Existence
   let db = mysql.createConnection(db_config);
   db.connect();
+  console.log('deserialize user');
   db.query('SELECT * FROM user WHERE username=?', [username], function (err, results) {
     if (err)
       return done(err, false);
@@ -69,31 +70,8 @@ router.options('/login', (req, res) => {
 
 
 // 로그인 처리 부분
-router.post('/login', (req, res, next) => { // When a login request is received
-  passport.authenticate('local', (err, user, info) => {
-    if (err) {
-      res.status(404).json({
-        isSuccess: false,
-        code: "로그인 실패"
-      });
-      return;
-    }
-
-    if (user) {
-      //const token = user.generateJwt();
-      res.status(200);
-      res.json({
-        isSuccess: true,
-        code: "로그인 성공"
-      });
-    } else {
-      res.status(401).json({
-        isSuccess: false,
-        code: "로그인 실패"
-      });
-    }
-  })(req, res, next);
-}
+router.post('/login', 
+  passport.authenticate('local')
 );
 
 // 로그아웃 처리

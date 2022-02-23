@@ -23,7 +23,6 @@ var registerRouter = require('./routes/register');
 var authRouter = require('./routes/auth');
 
 
-
 app.use(require('connect-history-api-fallback')());
 
 
@@ -50,9 +49,7 @@ app.use(session({
     maxAge: 6000 * 60 * 60 // 쿠키 유효기간 6시간
   }
 }));
-app.use(passport.initialize());
-app.use(passport.session());
-
+app.use(passport.authenticate('session'));
 
 
 // 여러 라우터들 연결 부분
@@ -60,8 +57,49 @@ app.use('/', indexRouter);
 app.use('/', authRouter);
 app.use('/register', registerRouter);
 
-
-
+app.post('/logincheck', (req, res) => {
+  if(req.user) {
+    res.status(200).json({
+      isSuccess: true,
+      code: "로그인 성공",
+      userInfo: {
+        userIdx: 1,
+        userNickname: req.user.username,
+        userBirth: {
+          year: 2022,
+          month: 1,
+          day: 1,
+        },
+        userGender: "",
+        userJob: "",
+        interest: {
+          job: "",
+          detailJob: [],
+        },
+      },
+    });
+  } else {
+    res.status(200).json({
+      isSuccess: false,
+      code: "로그인 실패",
+      userInfo: {
+        userIdx: null,
+        userNickname: "",
+        userBirth: {
+          year: 2022,
+          month: 1,
+          day: 1,
+        },
+        userGender: "",
+        userJob: "",
+        interest: {
+          job: "",
+          detailJob: [],
+        },
+      },
+    });
+  }
+})
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
