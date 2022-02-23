@@ -1,4 +1,5 @@
 import * as authApi from "@/api/authApi";
+import router from "@/router";
 
 export default {
     // 로그인, 로그아웃, 회원가입등 인증 관련 vuex (새로고침 시 초기화)
@@ -6,6 +7,23 @@ export default {
     // state는 data와 같음
     // this.$store.state.변수명
     state: () => ({
+        // 유저 정보 저장
+        userInfo: {
+            userIdx: null,
+
+            userNickname: "",
+            userBirth: {
+                year: 2022,
+                month: 1,
+                day: 1,
+            },
+            userGender: "",
+            userJob: "",
+            interest: {
+                job: "",
+                detailJob: [],
+            },
+        },
         // 회원가입 입력 정보 임시 저장
         registerInfo: {
             email: "",
@@ -50,18 +68,18 @@ export default {
     // 첫번째 인자는 state(변수 저장소),두번째 인자로 payload로 함수에 쓰일 파라미터들을 전달 (payload말고 그냥 변수 써도됨 payload는 여러 변수의 집합 느낌?)
     // this.$store.commit("함수명",{변수 파라미터들})
     mutations: {
-        // 로그인 성공 후
-        responseLogin(state, loginResult) {
-            console.log("mutation - responseLogin 실행");
-            if (loginResult.isSuccess) {
-                alert("로그인 성공");
-                console.log("로그인 성공");
-                // 로그인한 유저의 정보를 저장후 홈 페이지로 넘어감
-                this.$store.state.user.userInfo = loginResult.userInfo;
-                location.href = "./main";
+        // 로그인 체크 후
+        responseCheckLogin(state, checkResult) {
+            console.log("mutation - responseCheckLogin 실행");
+            if (checkResult.isSuccess) {
+                alert("로그인 되어 있음");
+                console.log("로그인 되어 있음");
+                // 로그인 되어 있는 유저의 정보를 저장 시킴
+                state.userInfo = checkResult.userInfo;
             } else {
-                alert("로그인 실패");
-                console.log("로그인 실패");
+                alert("로그인 안되어 있음 -> 로그인 필요");
+                console.log("로그인 필요");
+                router.replace({ name: "Login" });
             }
         },
 
@@ -89,7 +107,7 @@ export default {
                         detailJob: [],
                     },
                 };
-                location.href = "./login";
+                router.replace({ name: "Login" });
             } else {
                 alert("로그아웃 실패");
                 console.log("로그아웃 실패");
@@ -104,11 +122,11 @@ export default {
                 alert("회원가입 성공");
                 console.log("회원가입 성공");
                 // 로그인 창으로 넘어감
-                location.href = "./login";
+                router.replace({ name: "Login" });
             } else {
                 alert("회원가입 실패");
                 console.log("회원가입 실패");
-                location.href = "./register";
+                router.replace({ name: "Register" });
             }
         },
     },
@@ -116,16 +134,27 @@ export default {
     // actions는 async methods(비동기)와 같다
     // this.$store.dispatch("함수명")
     actions: {
+        // 로그인 상태 확인
+        checkLogin(context) {
+            console.log("action - checkLogin 실행");
+            authApi
+                .checkLogin()
+                // 서버 통신 성공 시
+                .then((response) => {
+                    console.log(response.data);
+                    context.commit("responseCheckLogin", response.data);
+                })
+                //에러 발생 시
+                .catch((error) => {
+                    console.log("에러" + error);
+                    router.replace({ name: "Login" });
+                });
+        },
         // 서버로 로그인 요청
         requestLogin(context, inputData) {
             console.log("action - requestLogin 실행");
             authApi
                 .requestLogin(inputData)
-                // 서버 통신 성공 시
-                .then((response) => {
-                    console.log(response.data);
-                    context.commit("responseLogin", response.data);
-                })
                 //에러 발생 시
                 .catch((error) => {
                     console.log("에러" + error);

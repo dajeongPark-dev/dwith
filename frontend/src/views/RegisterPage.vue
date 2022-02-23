@@ -50,7 +50,7 @@ export default {
     },
     created() {
         console.log("RegisterPage created");
-        this.$store.state.user.registerInfo = {
+        this.$store.state.auth.registerInfo = {
             userEmail: "",
             userPassword: "",
             userNickname: "",

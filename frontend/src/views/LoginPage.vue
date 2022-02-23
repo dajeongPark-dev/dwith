@@ -53,7 +53,7 @@ export default {
             console.log("입력 아이디 : " + this.inputEmail);
             console.log("입력 비밀번호 : " + this.inputPsw);
             console.log("자동 로그인 여부 : " + this.autoLogin);
-            
+
             this.$store.dispatch("requestLogin", { username: this.inputEmail, password: this.inputPsw });
         },
     },
@@ -64,10 +64,10 @@ export default {
         console.log("LoginPage mounted");
 
         // userIdx를 가진 상태(로그인 된 상태)라면 메인 페이지로 이동
-        if (this.$store.state.user.userInfo.userIdx !== null) {
+        if (this.$store.state.auth.userInfo.userIdx !== null) {
             console.log("로그인 되어있음 -> 메인 페이지로 이동");
             alert("로그인 되어 있음");
-            location.href = "./main";
+            this.$router.replace({ name: "Home" });
         }
     },
 };
