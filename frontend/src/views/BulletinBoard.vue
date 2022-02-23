@@ -3,18 +3,22 @@
 <template>
   <div id="bbs-page">
     <div id="bbs-page-header">
-      <div class="header-bbs-name">선택 게시판</div>
-      <b-button pill variant="light" class="header-bbs-switch">일반형</b-button>
-      <b-button pill variant="light" class="header-search"
-        ><img
-          src="@/image/search.png"
-          style="float: right; width: 10px; height: 10px"
-      /></b-button>
-      <b-button pill variant="light" class="header-alert"
-        ><img
-          src="@/image/notification.png"
-          style="float: right; width: 10px; height: 10px"
-      /></b-button>
+      <span class="header-bbs-name">선택 게시판</span>
+      <span class="header-bbs-button">
+        <b-button pill variant="light" class="header-bbs-switch"
+          >일반형</b-button
+        >
+        <b-button pill variant="light" class="header-search"
+          ><img
+            src="@/image/search.png"
+            style="float: right; width: 10px; height: 10px"
+        /></b-button>
+        <b-button pill variant="light" class="header-alert"
+          ><img
+            src="@/image/notification.png"
+            style="float: right; width: 10px; height: 10px"
+        /></b-button>
+      </span>
     </div>
     <div id="bbs-page-posts">
       <bbsChoice></bbsChoice>
@@ -53,30 +57,39 @@ export default {
 }
 #bbs-page-header {
   position: relative;
+  margin: 0px;
+  padding: 15px;
   width: inherit;
   height: 100px;
   background: white 0% 0% no-repeat padding-box;
   box-shadow: 0px 1px 4px #0000004d;
+  display: flex;
+  flex-direction: row;
   opacity: 1;
 }
 .header-bbs-name {
-  position: absolute;
+  position: relative;
+  margin: 0px;
   top: 21.6%;
-  left: 4.8%;
-  /* width: 38%; */
-  width: fit-content;
-  height: 10%;
+  width: 25%;
+  height: inherit;
   text-align: left;
   font: normal normal bold 19px/36px Noto Sans KR;
   letter-spacing: -0.76px;
   color: #000000;
   opacity: 1;
 }
+.header-bbs-button {
+  position: relative;
+  height: inherit;
+  width: 75%;
+  display: flex;
+  justify-content: flex-end;
+}
 .header-bbs-switch {
-  position: absolute;
+  position: relative;
   top: 21.6%;
-  left: 146px;
-  width: 95px;
+  width: auto + 10px;
   height: 33px;
   background: #ffffff 0% 0% no-repeat padding-box;
   box-shadow: 0px 1px 4px #0000004d;
@@ -87,9 +100,9 @@ export default {
   opacity: 1;
 }
 .header-search {
-  position: absolute;
+  position: relative;
   top: 21.6%;
-  left: 250px;
+  margin: 0px 10px 0px 25px;
   width: fit-content;
   height: 33px;
   background: #ffffff 0% 0% no-repeat padding-box;
@@ -101,9 +114,9 @@ export default {
   opacity: 1;
 }
 .header-alert {
-  position: absolute;
+  position: relative;
   top: 21.6%;
-  left: 300px;
+  margin: 0px 40px 0px 0px;
   width: fit-content;
   height: 33px;
   background: #ffffff 0% 0% no-repeat padding-box;
@@ -120,7 +133,7 @@ export default {
 #bbs-page-posts {
   position: relative;
   width: inherit;
-  height: 1250px;
+  height: auto;
   background: #00000012 0% 0% no-repeat padding-box;
   opacity: 2;
   border-bottom: 1px black solid;
