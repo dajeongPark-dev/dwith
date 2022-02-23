@@ -6,6 +6,23 @@ export default {
     // state는 data와 같음
     // this.$store.state.변수명
     state: () => ({
+        // 유저 정보 저장
+        userInfo: {
+            userIdx: null,
+
+            userNickname: "",
+            userBirth: {
+                year: 2022,
+                month: 1,
+                day: 1,
+            },
+            userGender: "",
+            userJob: "",
+            interest: {
+                job: "",
+                detailJob: [],
+            },
+        },
         // 회원가입 입력 정보 임시 저장
         registerInfo: {
             email: "",
@@ -57,7 +74,7 @@ export default {
                 alert("로그인 성공");
                 console.log("로그인 성공");
                 // 로그인한 유저의 정보를 저장후 홈 페이지로 넘어감
-                this.$store.state.user.userInfo = loginResult.userInfo;
+                state.userInfo = loginResult.userInfo;
                 location.href = "./main";
             } else {
                 alert("로그인 실패");
