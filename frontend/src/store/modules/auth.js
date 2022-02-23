@@ -123,8 +123,8 @@ export default {
                 .requestLogin(inputData)
                 // 서버 통신 성공 시
                 .then((response) => {
-                    console.log(response);
-                    context.commit("responseLogin", response);
+                    console.log(response.data);
+                    context.commit("responseLogin", response.data);
                 })
                 //에러 발생 시
                 .catch((error) => {
