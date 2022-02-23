@@ -60,7 +60,7 @@ export default {
     data() {
         return {
             userInfo: {
-                userIdx: 1000,
+                userIdx: -1,
                 userNickname: "닉네임",
             },
         };
@@ -74,14 +74,12 @@ export default {
         console.log("HomePage created");
 
         // 유저 idx를 가지지 않은 상태(로그인 안된 상태)라면 로그인 페이지로 이동
-        if (this.$store.state.user.userInfo.userIdx === null) {
-            console.log("로그인 필요 -> 로그인 페이지로 이동");
-            alert("로그인 필요");
-            location.href = "./login";
-        }
+        this.$store.dispatch("checkLogin");
     },
     mounted() {
         console.log("HomePage mounted");
+        this.userInfo.userIdx = this.$store.state.auth.userInfo.userIdx;
+        this.userInfo.userNickname = this.$store.state.auth.userInfo.userNickname;
     },
 };
 </script>

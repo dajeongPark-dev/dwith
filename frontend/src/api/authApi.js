@@ -1,5 +1,9 @@
 import http from "./http";
 
+export async function checkLogin() {
+    return http.post("/logincheck");
+}
+
 export async function requestLogin(inputData) {
     return http.post("/login", inputData);
 }
