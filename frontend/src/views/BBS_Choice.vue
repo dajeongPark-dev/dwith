@@ -57,6 +57,7 @@
             <choiceCard></choiceCard>
             <choiceCard></choiceCard>
           </div>
+          <div class="tabpane-footer"></div>
         </div>
       </transition>
     </div>
@@ -245,6 +246,11 @@ export default {
   font-size: 32px;
   display: flex;
   flex-wrap: wrap;
+}
+.tabpane-footer {
+  position: relative;
+  width: inherit;
+  height: 100px;
 }
 
 #board {
