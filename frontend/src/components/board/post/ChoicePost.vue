@@ -52,8 +52,8 @@ export default {
 .choiceCard {
   width: 338px;
   padding: 20px;
-  height: 336px;
-  margin: 20px 0px 20px 0px;
+  height: 345px;
+  margin: 8px 18px 8px 19px;
   background: white 0% 0% no-repeat padding-box;
   box-shadow: inset 0px -3px 6px #00000029;
   /*mix-blend-mode: multiply;*/

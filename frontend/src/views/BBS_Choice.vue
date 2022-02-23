@@ -36,15 +36,27 @@
     >
       <transition :name="transition" v-for="(tab, index) in items" :key="index">
         <div class="tabpane" v-if="index === activetab">
-          <div class="myTag">
+          <div class="tabpane-mytag">
+            <b-button pill variant="light" class="myTag-button">
+              일반형
+            </b-button>
+            <b-button pill variant="light" class="myTag-button">
+              UI.UX 디자인
+            </b-button>
+            <b-button pill variant="light" class="myTag-button">
+              브랜딩 디자인
+            </b-button>
+            <b-button pill variant="light" class="myTag-button"> + </b-button>
             <!-- 세부 분야 넣기 -->
           </div>
-          <choiceCard></choiceCard>
-          <choiceCard></choiceCard>
-          <choiceCard></choiceCard>
-          <choiceCard></choiceCard>
-          <choiceCard></choiceCard>
-          <choiceCard></choiceCard>
+          <div class="tabpane-post">
+            <choiceCard></choiceCard>
+            <choiceCard></choiceCard>
+            <choiceCard></choiceCard>
+            <choiceCard></choiceCard>
+            <choiceCard></choiceCard>
+            <choiceCard></choiceCard>
+          </div>
         </div>
       </transition>
     </div>
@@ -200,7 +212,7 @@ export default {
 }
 
 .tabcontainer {
-  height: 500px;
+  height: auto;
   position: relative;
   min-height: 100%;
   width: 100%;
@@ -210,16 +222,29 @@ export default {
 .tabpane {
   position: relative;
   width: 100%;
-  height: 300px;
-  font-size: 32px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-grow: 0;
+  height: auto;
 }
 
-.myTag {
+.tabpane-mytag {
   position: relative;
+  margin: 17px 15px 30px 19px;
+  height: 50px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.myTag-button {
+  position: relative;
+  margin: 3px;
+  display: flex;
+}
+
+.tabpane-post {
+  position: relative;
+  width: 100%;
+  font-size: 32px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 #board {
