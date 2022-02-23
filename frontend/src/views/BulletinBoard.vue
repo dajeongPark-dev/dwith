@@ -3,11 +3,13 @@
 <template>
   <div id="bbs-page">
     <div id="bbs-page-header">
-      <span class="header-bbs-name">선택 게시판</span>
+      <span class="header-bbs-info">
+        <span class="header-bbs-name">선택 게시판</span>
+        <b-button pill variant="light" class="header-bbs-switch">
+          일반형
+        </b-button>
+      </span>
       <span class="header-bbs-button">
-        <b-button pill variant="light" class="header-bbs-switch"
-          >일반형</b-button
-        >
         <b-button pill variant="light" class="header-search"
           ><img
             src="@/image/search.png"
@@ -23,7 +25,7 @@
     <div id="bbs-page-posts">
       <bbsChoice></bbsChoice>
     </div>
-    <div style="position: fixed; right: 75px; bottom: 120px">
+    <div style="position: fixed; right: 40px; bottom: 120px">
       <img
         src="@/image/plus-button.png"
         style="float: right; width: 50px; height: 50px"
@@ -58,7 +60,6 @@ export default {
 #bbs-page-header {
   position: relative;
   margin: 0px;
-  padding: 15px;
   width: inherit;
   height: 100px;
   background: white 0% 0% no-repeat padding-box;
@@ -67,42 +68,54 @@ export default {
   flex-direction: row;
   opacity: 1;
 }
+
+.header-bbs-info {
+  position: relative;
+  width: 70%;
+  height: inherit;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
 .header-bbs-name {
   position: relative;
-  margin: 0px;
-  top: 21.6%;
-  width: 25%;
-  height: inherit;
+  margin: 19px;
+  width: fit-content;
+  height: fit-content;
   text-align: left;
-  font: normal normal bold 19px/36px Noto Sans KR;
+  font: normal normal bold 25px/36px Noto Sans KR;
   letter-spacing: -0.76px;
   color: #000000;
   opacity: 1;
 }
-.header-bbs-button {
-  position: relative;
-  height: inherit;
-  width: 75%;
-  display: flex;
-  justify-content: flex-end;
-}
+
 .header-bbs-switch {
   position: relative;
-  top: 21.6%;
-  width: auto + 10px;
-  height: 33px;
+  width: 80px;
+  height: 30px;
   background: #ffffff 0% 0% no-repeat padding-box;
   box-shadow: 0px 1px 4px #0000004d;
   border-radius: 17px;
   text-align: center;
+  font: normal normal bold 15px/10px Noto Sans KR;
   letter-spacing: -0.6px;
   color: #00000099;
   opacity: 1;
 }
+
+.header-bbs-button {
+  position: relative;
+  width: 30%;
+  height: inherit;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
 .header-search {
   position: relative;
-  top: 21.6%;
-  margin: 0px 10px 0px 25px;
+  margin: 0px;
   width: fit-content;
   height: 33px;
   background: #ffffff 0% 0% no-repeat padding-box;
@@ -115,8 +128,7 @@ export default {
 }
 .header-alert {
   position: relative;
-  top: 21.6%;
-  margin: 0px 40px 0px 0px;
+  margin: 18px;
   width: fit-content;
   height: 33px;
   background: #ffffff 0% 0% no-repeat padding-box;
@@ -127,6 +139,7 @@ export default {
   color: #00000099;
   opacity: 1;
 }
+
 .body-category {
   top: 3px;
 }
